@@ -8,8 +8,8 @@ function shiftDay(key,n){const d=new Date(key+'T12:00:00+07:00');d.setUTCDate(d.
 function dailyTarget(){return Math.max(4,Math.min(12,Math.round(state.profile.minutes/2)));}
 function doneToday(today=dayKey()){return state.sessions.filter(s=>s.date===today).reduce((a,s)=>a+s.count,0)+(state.draft&&dayKey(new Date(state.draft.started))===today?state.draft.results.length:0);}
 function badgeList(){const a=Object.values(state.answers),days=new Set(state.sessions.map(x=>x.date)).size;return [['01-first-steps','Bước đầu tiên','Hoàn thành phiên học đầu tiên',state.sessions.length>=1],['02-learning-rhythm','Nhịp học đều đặn','Học trong 3 ngày khác nhau',days>=3],['03-answer-finder','Người tìm đáp án','Tự làm đúng 10 câu mới',a.filter(x=>x.firstCorrect).length>=10],['04-mistake-fixer','Thợ sửa lỗi','Chinh phục lại 5 lỗi sai',a.filter(x=>x.mastered&&!x.firstCorrect).length>=5],['05-knowledge-explorer','Nhà khám phá','Đã gặp ít nhất 30 câu',Object.keys(state.answers).length>=30],['06-unstoppable','Không ngừng tiến bước','Tích lũy 300 XP',state.xp>=300]];}
-// Existing backups lack a completion flag; only infer completion from a full assessment.
-function hasCompletedSession(mode){return state.sessions.some(s=>s.mode===mode&&(s.completed??(mode==='diagnostic'?s.count>=12:mode==='mock'?s.count>0&&s.answered===s.count:false)));}
+// Sessions saved before the completion flag: finish(true) is the only early exit and it marks the label.
+function hasCompletedSession(mode){return state.sessions.some(s=>s.mode===mode&&(s.completed??(s.count>0&&!String(s.label||'').endsWith(' · phiên ngắn'))));}
 // Units follow the four phases in the plan; nodes are the practice modes that really exist.
 function pathUnits(){
  const has=hasCompletedSession,seen=Object.keys(state.answers).length,pending=Object.values(state.answers).filter(a=>!a.mastered).length;
