@@ -1,0 +1,11 @@
+{
+  "name": "asmo-english-quest",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/bundle.mjs && node scripts/dev.mjs",
+    "build": "node scripts/bundle.mjs && bash scripts/build.sh",
+    "test": "node --test tests/*.test.mjs",
+    "validate": "node scripts/validate-artifact.mjs"
+  }
+}

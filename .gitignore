@@ -1,0 +1,15 @@
+dist/
+site.tar.gz
+.env
+.env.*
+!.env.example
+node_modules/
+output/
+.DS_Store
+*.log
+__pycache__/
+*.pyc
+.claude/settings.local.json
+
+.openai/hosting.json
+reference/*.pdf
