@@ -1,0 +1,642 @@
+[
+  {
+    "id": "pdf-1",
+    "category": "vocab",
+    "prompt": "The scientist made an enormous discovery that changed the world. The word enormous is closest\nin meaning to:",
+    "choices": [
+      "tiny",
+      "huge",
+      "strange",
+      "quick"
+    ],
+    "answer": 1,
+    "explanation": "Enormous = huge: rất lớn. Tiny mang nghĩa ngược lại.",
+    "passage": "",
+    "source": "PDF luyện lớp 6 · câu 1",
+    "level": 1
+  },
+  {
+    "id": "pdf-2",
+    "category": "vocab",
+    "prompt": "My brother is very reliable. You can always count on him.",
+    "choices": [
+      "lazy",
+      "dependable",
+      "funny",
+      "nervous"
+    ],
+    "answer": 1,
+    "explanation": "Reliable = dependable: đáng tin cậy. Count on someone = tin cậy ai.",
+    "passage": "",
+    "source": "PDF luyện lớp 6 · câu 2",
+    "level": 1
+  },
+  {
+    "id": "pdf-3",
+    "category": "vocab",
+    "prompt": "Which word is the OPPOSITE of generous?",
+    "choices": [
+      "kind",
+      "selfish",
+      "wealthy",
+      "polite"
+    ],
+    "answer": 1,
+    "explanation": "Generous là hào phóng; trái nghĩa là selfish (ích kỷ).",
+    "passage": "",
+    "source": "PDF luyện lớp 6 · câu 3",
+    "level": 1
+  },
+  {
+    "id": "pdf-4",
+    "category": "vocab",
+    "prompt": "Choose the correct collocation: We need to ______ a decision before Friday.",
+    "choices": [
+      "do",
+      "take",
+      "make",
+      "give"
+    ],
+    "answer": 2,
+    "explanation": "Cụm cố định là make a decision: đưa ra quyết định.",
+    "passage": "",
+    "source": "PDF luyện lớp 6 · câu 4",
+    "level": 1
+  },
+  {
+    "id": "pdf-5",
+    "category": "vocab",
+    "prompt": "Which word does NOT belong in the group?",
+    "choices": [
+      "hurricane",
+      "earthquake",
+      "volcano",
+      "compass"
+    ],
+    "answer": 3,
+    "explanation": "Compass là la bàn, một dụng cụ; ba từ còn lại chỉ hiện tượng thiên nhiên nguy hiểm.",
+    "passage": "",
+    "source": "PDF luyện lớp 6 · câu 5",
+    "level": 1
+  },
+  {
+    "id": "pdf-6",
+    "category": "vocab",
+    "prompt": "The teacher asked us to ______ our essays for spelling mistakes before handing them in.",
+    "choices": [
+      "proofread",
+      "predict",
+      "produce",
+      "protect"
+    ],
+    "answer": 0,
+    "explanation": "Proofread = đọc soát lỗi, phù hợp với spelling mistakes.",
+    "passage": "",
+    "source": "PDF luyện lớp 6 · câu 6",
+    "level": 1
+  },
+  {
+    "id": "pdf-7",
+    "category": "vocab",
+    "prompt": "Choose the word with the correct spelling.",
+    "choices": [
+      "neccessary",
+      "necesary",
+      "necessary",
+      "necessery"
+    ],
+    "answer": 2,
+    "explanation": "Necessary viết với một c và hai s. Mẹo: one collar, two sleeves.",
+    "passage": "",
+    "source": "PDF luyện lớp 6 · câu 7",
+    "level": 1
+  },
+  {
+    "id": "pdf-8",
+    "category": "vocab",
+    "prompt": "The old castle was abandoned many years ago. Abandoned means:",
+    "choices": [
+      "repaired",
+      "decorated",
+      "left empty",
+      "visited often"
+    ],
+    "answer": 2,
+    "explanation": "Abandoned = bị bỏ hoang, không còn người ở.",
+    "passage": "",
+    "source": "PDF luyện lớp 6 · câu 8",
+    "level": 1
+  },
+  {
+    "id": "pdf-9",
+    "category": "vocab",
+    "prompt": "Which idiom means 'to be very happy'?",
+    "choices": [
+      "under the weather",
+      "over the moon",
+      "on thin ice",
+      "in hot water"
+    ],
+    "answer": 1,
+    "explanation": "Over the moon = rất vui. Under the weather = không khỏe.",
+    "passage": "",
+    "source": "PDF luyện lớp 6 · câu 9",
+    "level": 1
+  },
+  {
+    "id": "pdf-10",
+    "category": "vocab",
+    "prompt": "Sarah felt ______ when she saw the spider crawling towards her.",
+    "choices": [
+      "terrified",
+      "delighted",
+      "curious",
+      "grateful"
+    ],
+    "answer": 0,
+    "explanation": "Terrified = rất sợ hãi, phù hợp phản ứng khi thấy nhện bò tới.",
+    "passage": "",
+    "source": "PDF luyện lớp 6 · câu 10",
+    "level": 1
+  },
+  {
+    "id": "pdf-11",
+    "category": "grammar",
+    "prompt": "By the time we arrived at the station, the train ______.",
+    "choices": [
+      "already left",
+      "has already left",
+      "had already left",
+      "was already leaving"
+    ],
+    "answer": 2,
+    "explanation": "Hành động tàu rời xảy ra trước lúc chúng tôi đến trong quá khứ: had already left.",
+    "passage": "",
+    "source": "PDF luyện lớp 6 · câu 11",
+    "level": 2
+  },
+  {
+    "id": "pdf-12",
+    "category": "grammar",
+    "prompt": "If it ______ tomorrow, we will cancel the picnic.",
+    "choices": [
+      "rains",
+      "will rain",
+      "rained",
+      "is raining"
+    ],
+    "answer": 0,
+    "explanation": "Điều kiện loại 1: If + hiện tại đơn, will + động từ. Chủ ngữ it nên rains.",
+    "passage": "",
+    "source": "PDF luyện lớp 6 · câu 12",
+    "level": 2
+  },
+  {
+    "id": "pdf-13",
+    "category": "grammar",
+    "prompt": "Neither the students nor the teacher ______ aware of the change in schedule.",
+    "choices": [
+      "were",
+      "was",
+      "are",
+      "have been"
+    ],
+    "answer": 1,
+    "explanation": "Neither…nor: động từ theo chủ ngữ gần nhất. The teacher số ít nên was.",
+    "passage": "",
+    "source": "PDF luyện lớp 6 · câu 13",
+    "level": 2
+  },
+  {
+    "id": "pdf-14",
+    "category": "grammar",
+    "prompt": "This is the boy ______ bicycle was stolen yesterday.",
+    "choices": [
+      "who",
+      "whom",
+      "which",
+      "whose"
+    ],
+    "answer": 3,
+    "explanation": "Whose diễn tả sở hữu: chiếc xe đạp của cậu bé.",
+    "passage": "",
+    "source": "PDF luyện lớp 6 · câu 14",
+    "level": 2
+  },
+  {
+    "id": "pdf-15",
+    "category": "grammar",
+    "prompt": "She has been learning the piano ______ five years.",
+    "choices": [
+      "since",
+      "for",
+      "during",
+      "from"
+    ],
+    "answer": 1,
+    "explanation": "For + khoảng thời gian (five years); since + mốc thời gian.",
+    "passage": "",
+    "source": "PDF luyện lớp 6 · câu 15",
+    "level": 2
+  },
+  {
+    "id": "pdf-16",
+    "category": "grammar",
+    "prompt": "'Where did you buy that hat?' she asked. → She asked me ______.",
+    "choices": [
+      "where I bought that hat",
+      "where did I buy that hat",
+      "where I had bought that hat",
+      "where had I bought that hat"
+    ],
+    "answer": 2,
+    "explanation": "Câu hỏi gián tiếp dùng trật tự câu kể; trong cách lùi thì của bài này, did buy chuyển thành had bought.",
+    "passage": "",
+    "source": "PDF luyện lớp 6 · câu 16",
+    "level": 2
+  },
+  {
+    "id": "pdf-17",
+    "category": "grammar",
+    "prompt": "The homework ______ by all students before Monday.",
+    "choices": [
+      "must finish",
+      "must be finished",
+      "must have finished",
+      "must finishing"
+    ],
+    "answer": 1,
+    "explanation": "Bị động với động từ khuyết thiếu: must + be + quá khứ phân từ → must be finished.",
+    "passage": "",
+    "source": "PDF luyện lớp 6 · câu 17",
+    "level": 2
+  },
+  {
+    "id": "pdf-18",
+    "category": "grammar",
+    "prompt": "Tom is ______ than his brother, but his brother is ______ student in the class.",
+    "choices": [
+      "taller / the best",
+      "more tall / better",
+      "taller / better",
+      "tallest / the best"
+    ],
+    "answer": 0,
+    "explanation": "So sánh hai người: taller than. So sánh nhất trong cả lớp: the best.",
+    "passage": "",
+    "source": "PDF luyện lớp 6 · câu 18",
+    "level": 2
+  },
+  {
+    "id": "pdf-19",
+    "category": "grammar",
+    "prompt": "I look forward to ______ from you soon.",
+    "choices": [
+      "hear",
+      "hearing",
+      "heard",
+      "be heard"
+    ],
+    "answer": 1,
+    "explanation": "Trong look forward to, to là giới từ nên theo sau bởi V-ing: hearing.",
+    "passage": "",
+    "source": "PDF luyện lớp 6 · câu 19",
+    "level": 2
+  },
+  {
+    "id": "pdf-20",
+    "category": "grammar",
+    "prompt": "Choose the sentence with the correct punctuation.",
+    "choices": [
+      "\"Lets go home\" said Mum.",
+      "\"Let's go home,\" said Mum.",
+      "\"Lets go home,\" said Mum",
+      "\"Let's go home\" said mum."
+    ],
+    "answer": 1,
+    "explanation": "Let’s có dấu nháy; lời nói trực tiếp có dấu phẩy trước dấu đóng ngoặc kép; Mum viết hoa.",
+    "passage": "",
+    "source": "PDF luyện lớp 6 · câu 20",
+    "level": 2
+  },
+  {
+    "id": "pdf-21",
+    "category": "cloze",
+    "prompt": "(21)",
+    "choices": [
+      "collect",
+      "collects",
+      "collecting",
+      "collected"
+    ],
+    "answer": 0,
+    "explanation": "Worker bees là chủ ngữ số nhiều, dùng collect ở hiện tại đơn.",
+    "passage": "Honeybees are among the most important insects on Earth. They live in large groups called\ncolonies, and each colony can have up to 60,000 bees. Every bee has a job. Worker bees (21)\n______ nectar from flowers and bring it back to the hive, (22) ______ it is turned into honey. The\nqueen bee is the only female that lays eggs, and she can lay more than 2,000 eggs in a single\nday. (23) ______ their small size, bees play a huge role in agriculture. As they move from flower\nto flower, they carry pollen, (24) ______ helps plants produce fruit and seeds. Scientists estimate\n\n\nthat one out of every three bites of food we eat (25) ______ on pollination by bees. (26) ______,\nbee populations have been falling in many countries because of pesticides, disease and the loss\nof wild flowers. Many people are now planting bee-friendly gardens (27) ______ help. Even a\nsmall balcony with a few flowering plants can make a (28) ______ to a hungry bee.",
+    "source": "PDF luyện lớp 6 · câu 21",
+    "level": 2
+  },
+  {
+    "id": "pdf-22",
+    "category": "cloze",
+    "prompt": "(22)",
+    "choices": [
+      "which",
+      "where",
+      "when",
+      "what"
+    ],
+    "answer": 1,
+    "explanation": "Where thay cho địa điểm the hive: nơi mật hoa được biến thành mật ong.",
+    "passage": "Honeybees are among the most important insects on Earth. They live in large groups called\ncolonies, and each colony can have up to 60,000 bees. Every bee has a job. Worker bees (21)\n______ nectar from flowers and bring it back to the hive, (22) ______ it is turned into honey. The\nqueen bee is the only female that lays eggs, and she can lay more than 2,000 eggs in a single\nday. (23) ______ their small size, bees play a huge role in agriculture. As they move from flower\nto flower, they carry pollen, (24) ______ helps plants produce fruit and seeds. Scientists estimate\n\n\nthat one out of every three bites of food we eat (25) ______ on pollination by bees. (26) ______,\nbee populations have been falling in many countries because of pesticides, disease and the loss\nof wild flowers. Many people are now planting bee-friendly gardens (27) ______ help. Even a\nsmall balcony with a few flowering plants can make a (28) ______ to a hungry bee.",
+    "source": "PDF luyện lớp 6 · câu 22",
+    "level": 2
+  },
+  {
+    "id": "pdf-23",
+    "category": "cloze",
+    "prompt": "(23)",
+    "choices": [
+      "Because of",
+      "Although",
+      "Despite",
+      "However"
+    ],
+    "answer": 2,
+    "explanation": "Despite + cụm danh từ their small size. Although cần một mệnh đề đầy đủ.",
+    "passage": "Honeybees are among the most important insects on Earth. They live in large groups called\ncolonies, and each colony can have up to 60,000 bees. Every bee has a job. Worker bees (21)\n______ nectar from flowers and bring it back to the hive, (22) ______ it is turned into honey. The\nqueen bee is the only female that lays eggs, and she can lay more than 2,000 eggs in a single\nday. (23) ______ their small size, bees play a huge role in agriculture. As they move from flower\nto flower, they carry pollen, (24) ______ helps plants produce fruit and seeds. Scientists estimate\n\n\nthat one out of every three bites of food we eat (25) ______ on pollination by bees. (26) ______,\nbee populations have been falling in many countries because of pesticides, disease and the loss\nof wild flowers. Many people are now planting bee-friendly gardens (27) ______ help. Even a\nsmall balcony with a few flowering plants can make a (28) ______ to a hungry bee.",
+    "source": "PDF luyện lớp 6 · câu 23",
+    "level": 2
+  },
+  {
+    "id": "pdf-24",
+    "category": "cloze",
+    "prompt": "(24)",
+    "choices": [
+      "it",
+      "which",
+      "who",
+      "that it"
+    ],
+    "answer": 1,
+    "explanation": "Which thay cho hành động mang phấn hoa trong mệnh đề trước.",
+    "passage": "Honeybees are among the most important insects on Earth. They live in large groups called\ncolonies, and each colony can have up to 60,000 bees. Every bee has a job. Worker bees (21)\n______ nectar from flowers and bring it back to the hive, (22) ______ it is turned into honey. The\nqueen bee is the only female that lays eggs, and she can lay more than 2,000 eggs in a single\nday. (23) ______ their small size, bees play a huge role in agriculture. As they move from flower\nto flower, they carry pollen, (24) ______ helps plants produce fruit and seeds. Scientists estimate\n\n\nthat one out of every three bites of food we eat (25) ______ on pollination by bees. (26) ______,\nbee populations have been falling in many countries because of pesticides, disease and the loss\nof wild flowers. Many people are now planting bee-friendly gardens (27) ______ help. Even a\nsmall balcony with a few flowering plants can make a (28) ______ to a hungry bee.",
+    "source": "PDF luyện lớp 6 · câu 24",
+    "level": 2
+  },
+  {
+    "id": "pdf-25",
+    "category": "cloze",
+    "prompt": "(25)",
+    "choices": [
+      "depend",
+      "depends",
+      "depending",
+      "is depended"
+    ],
+    "answer": 1,
+    "explanation": "Chủ ngữ chính là one (một phần trong ba phần), nên động từ là depends.",
+    "passage": "Honeybees are among the most important insects on Earth. They live in large groups called\ncolonies, and each colony can have up to 60,000 bees. Every bee has a job. Worker bees (21)\n______ nectar from flowers and bring it back to the hive, (22) ______ it is turned into honey. The\nqueen bee is the only female that lays eggs, and she can lay more than 2,000 eggs in a single\nday. (23) ______ their small size, bees play a huge role in agriculture. As they move from flower\nto flower, they carry pollen, (24) ______ helps plants produce fruit and seeds. Scientists estimate\n\n\nthat one out of every three bites of food we eat (25) ______ on pollination by bees. (26) ______,\nbee populations have been falling in many countries because of pesticides, disease and the loss\nof wild flowers. Many people are now planting bee-friendly gardens (27) ______ help. Even a\nsmall balcony with a few flowering plants can make a (28) ______ to a hungry bee.",
+    "source": "PDF luyện lớp 6 · câu 25",
+    "level": 2
+  },
+  {
+    "id": "pdf-26",
+    "category": "cloze",
+    "prompt": "(26)",
+    "choices": [
+      "Therefore",
+      "In addition",
+      "For example",
+      "Unfortunately"
+    ],
+    "answer": 3,
+    "explanation": "Câu sau nói số lượng ong giảm: Unfortunately (đáng tiếc) báo hiệu tin xấu.",
+    "passage": "Honeybees are among the most important insects on Earth. They live in large groups called\ncolonies, and each colony can have up to 60,000 bees. Every bee has a job. Worker bees (21)\n______ nectar from flowers and bring it back to the hive, (22) ______ it is turned into honey. The\nqueen bee is the only female that lays eggs, and she can lay more than 2,000 eggs in a single\nday. (23) ______ their small size, bees play a huge role in agriculture. As they move from flower\nto flower, they carry pollen, (24) ______ helps plants produce fruit and seeds. Scientists estimate\n\n\nthat one out of every three bites of food we eat (25) ______ on pollination by bees. (26) ______,\nbee populations have been falling in many countries because of pesticides, disease and the loss\nof wild flowers. Many people are now planting bee-friendly gardens (27) ______ help. Even a\nsmall balcony with a few flowering plants can make a (28) ______ to a hungry bee.",
+    "source": "PDF luyện lớp 6 · câu 26",
+    "level": 2
+  },
+  {
+    "id": "pdf-27",
+    "category": "cloze",
+    "prompt": "(27)",
+    "choices": [
+      "for",
+      "to",
+      "so",
+      "in order"
+    ],
+    "answer": 1,
+    "explanation": "To + động từ diễn tả mục đích: trồng vườn để giúp ong.",
+    "passage": "Honeybees are among the most important insects on Earth. They live in large groups called\ncolonies, and each colony can have up to 60,000 bees. Every bee has a job. Worker bees (21)\n______ nectar from flowers and bring it back to the hive, (22) ______ it is turned into honey. The\nqueen bee is the only female that lays eggs, and she can lay more than 2,000 eggs in a single\nday. (23) ______ their small size, bees play a huge role in agriculture. As they move from flower\nto flower, they carry pollen, (24) ______ helps plants produce fruit and seeds. Scientists estimate\n\n\nthat one out of every three bites of food we eat (25) ______ on pollination by bees. (26) ______,\nbee populations have been falling in many countries because of pesticides, disease and the loss\nof wild flowers. Many people are now planting bee-friendly gardens (27) ______ help. Even a\nsmall balcony with a few flowering plants can make a (28) ______ to a hungry bee.",
+    "source": "PDF luyện lớp 6 · câu 27",
+    "level": 2
+  },
+  {
+    "id": "pdf-28",
+    "category": "cloze",
+    "prompt": "(28)",
+    "choices": [
+      "change",
+      "difference",
+      "matter",
+      "point"
+    ],
+    "answer": 1,
+    "explanation": "Cụm cố định make a difference: tạo ra sự khác biệt.",
+    "passage": "Honeybees are among the most important insects on Earth. They live in large groups called\ncolonies, and each colony can have up to 60,000 bees. Every bee has a job. Worker bees (21)\n______ nectar from flowers and bring it back to the hive, (22) ______ it is turned into honey. The\nqueen bee is the only female that lays eggs, and she can lay more than 2,000 eggs in a single\nday. (23) ______ their small size, bees play a huge role in agriculture. As they move from flower\nto flower, they carry pollen, (24) ______ helps plants produce fruit and seeds. Scientists estimate\n\n\nthat one out of every three bites of food we eat (25) ______ on pollination by bees. (26) ______,\nbee populations have been falling in many countries because of pesticides, disease and the loss\nof wild flowers. Many people are now planting bee-friendly gardens (27) ______ help. Even a\nsmall balcony with a few flowering plants can make a (28) ______ to a hungry bee.",
+    "source": "PDF luyện lớp 6 · câu 28",
+    "level": 2
+  },
+  {
+    "id": "pdf-29",
+    "category": "reading",
+    "prompt": "Why did William have to leave school?",
+    "choices": [
+      "He was not interested in studying.",
+      "His family could not pay the fees after the drought.",
+      "The school was closed because of the drought.",
+      "He wanted to work in the library."
+    ],
+    "answer": 1,
+    "explanation": "Đoạn đầu nói hạn hán khiến mùa màng thất bát và gia đình không trả nổi học phí.",
+    "passage": "When William Kamkwamba was fourteen years old, a terrible drought hit his village in Malawi, a\nsmall country in southern Africa. The crops failed, food became scarce, and William's family could\nno longer afford his school fees. Instead of giving up, William went to the small village library and\ntaught himself from old science books. One book, called Using Energy, had a picture of a windmill\non its cover. William realised that a windmill could pump water for the fields and produce\nelectricity for his home.\nHe began collecting scrap materials: a broken bicycle, plastic pipes, an old tractor fan and some\nwire. Many villagers laughed at him and called him crazy. But after months of work, William\nclimbed his wooden tower, connected the wires, and a small light bulb began to glow. It was the\nfirst electric light his village had ever seen.\n\n\nNews of the windmill spread quickly. Journalists came to visit, and William was invited to speak at\nconferences around the world. He later received a scholarship and graduated from an American\nuniversity. Today, William helps other young people in Africa build their own inventions. \"If you\nwant to make it, all you have to do is try,\" he says.",
+    "source": "PDF luyện lớp 6 · câu 29",
+    "level": 2
+  },
+  {
+    "id": "pdf-30",
+    "category": "reading",
+    "prompt": "Where did William get the idea to build a windmill?",
+    "choices": [
+      "From a journalist",
+      "From his teacher",
+      "From a book in the library",
+      "From a visitor to his village"
+    ],
+    "answer": 2,
+    "explanation": "William thấy hình cối xay gió trên bìa sách Using Energy ở thư viện.",
+    "passage": "When William Kamkwamba was fourteen years old, a terrible drought hit his village in Malawi, a\nsmall country in southern Africa. The crops failed, food became scarce, and William's family could\nno longer afford his school fees. Instead of giving up, William went to the small village library and\ntaught himself from old science books. One book, called Using Energy, had a picture of a windmill\non its cover. William realised that a windmill could pump water for the fields and produce\nelectricity for his home.\nHe began collecting scrap materials: a broken bicycle, plastic pipes, an old tractor fan and some\nwire. Many villagers laughed at him and called him crazy. But after months of work, William\nclimbed his wooden tower, connected the wires, and a small light bulb began to glow. It was the\nfirst electric light his village had ever seen.\n\n\nNews of the windmill spread quickly. Journalists came to visit, and William was invited to speak at\nconferences around the world. He later received a scholarship and graduated from an American\nuniversity. Today, William helps other young people in Africa build their own inventions. \"If you\nwant to make it, all you have to do is try,\" he says.",
+    "source": "PDF luyện lớp 6 · câu 30",
+    "level": 2
+  },
+  {
+    "id": "pdf-31",
+    "category": "reading",
+    "prompt": "The word scarce in paragraph 1 is closest in meaning to:",
+    "choices": [
+      "expensive",
+      "hard to find",
+      "unhealthy",
+      "delicious"
+    ],
+    "answer": 1,
+    "explanation": "Scarce = khan hiếm, khó tìm thấy; gắn với bối cảnh thiếu thức ăn.",
+    "passage": "When William Kamkwamba was fourteen years old, a terrible drought hit his village in Malawi, a\nsmall country in southern Africa. The crops failed, food became scarce, and William's family could\nno longer afford his school fees. Instead of giving up, William went to the small village library and\ntaught himself from old science books. One book, called Using Energy, had a picture of a windmill\non its cover. William realised that a windmill could pump water for the fields and produce\nelectricity for his home.\nHe began collecting scrap materials: a broken bicycle, plastic pipes, an old tractor fan and some\nwire. Many villagers laughed at him and called him crazy. But after months of work, William\nclimbed his wooden tower, connected the wires, and a small light bulb began to glow. It was the\nfirst electric light his village had ever seen.\n\n\nNews of the windmill spread quickly. Journalists came to visit, and William was invited to speak at\nconferences around the world. He later received a scholarship and graduated from an American\nuniversity. Today, William helps other young people in Africa build their own inventions. \"If you\nwant to make it, all you have to do is try,\" he says.",
+    "source": "PDF luyện lớp 6 · câu 31",
+    "level": 2
+  },
+  {
+    "id": "pdf-32",
+    "category": "reading",
+    "prompt": "How did the villagers react to William's project at first?",
+    "choices": [
+      "They helped him collect materials.",
+      "They asked him to build one for them.",
+      "They did not believe it would work.",
+      "They reported him to the journalists."
+    ],
+    "answer": 2,
+    "explanation": "Dân làng cười và gọi cậu là điên, cho thấy ban đầu họ không tin dự án thành công.",
+    "passage": "When William Kamkwamba was fourteen years old, a terrible drought hit his village in Malawi, a\nsmall country in southern Africa. The crops failed, food became scarce, and William's family could\nno longer afford his school fees. Instead of giving up, William went to the small village library and\ntaught himself from old science books. One book, called Using Energy, had a picture of a windmill\non its cover. William realised that a windmill could pump water for the fields and produce\nelectricity for his home.\nHe began collecting scrap materials: a broken bicycle, plastic pipes, an old tractor fan and some\nwire. Many villagers laughed at him and called him crazy. But after months of work, William\nclimbed his wooden tower, connected the wires, and a small light bulb began to glow. It was the\nfirst electric light his village had ever seen.\n\n\nNews of the windmill spread quickly. Journalists came to visit, and William was invited to speak at\nconferences around the world. He later received a scholarship and graduated from an American\nuniversity. Today, William helps other young people in Africa build their own inventions. \"If you\nwant to make it, all you have to do is try,\" he says.",
+    "source": "PDF luyện lớp 6 · câu 32",
+    "level": 2
+  },
+  {
+    "id": "pdf-33",
+    "category": "reading",
+    "prompt": "Which of the following happened LAST?",
+    "choices": [
+      "William graduated from university.",
+      "A light bulb glowed in the village.",
+      "William read the book Using Energy.",
+      "Journalists visited the village."
+    ],
+    "answer": 0,
+    "explanation": "Thứ tự: đọc sách → bóng đèn sáng → nhà báo đến → tốt nghiệp đại học.",
+    "passage": "When William Kamkwamba was fourteen years old, a terrible drought hit his village in Malawi, a\nsmall country in southern Africa. The crops failed, food became scarce, and William's family could\nno longer afford his school fees. Instead of giving up, William went to the small village library and\ntaught himself from old science books. One book, called Using Energy, had a picture of a windmill\non its cover. William realised that a windmill could pump water for the fields and produce\nelectricity for his home.\nHe began collecting scrap materials: a broken bicycle, plastic pipes, an old tractor fan and some\nwire. Many villagers laughed at him and called him crazy. But after months of work, William\nclimbed his wooden tower, connected the wires, and a small light bulb began to glow. It was the\nfirst electric light his village had ever seen.\n\n\nNews of the windmill spread quickly. Journalists came to visit, and William was invited to speak at\nconferences around the world. He later received a scholarship and graduated from an American\nuniversity. Today, William helps other young people in Africa build their own inventions. \"If you\nwant to make it, all you have to do is try,\" he says.",
+    "source": "PDF luyện lớp 6 · câu 33",
+    "level": 2
+  },
+  {
+    "id": "pdf-34",
+    "category": "reading",
+    "prompt": "What is the main message of the passage?",
+    "choices": [
+      "Droughts are common in Africa.",
+      "Libraries should have more science books.",
+      "Determination and self-learning can overcome great difficulties.",
+      "Windmills are cheaper than solar panels."
+    ],
+    "answer": 2,
+    "explanation": "William tự học và kiên trì vượt khó: đó là thông điệp bao quát của cả bài.",
+    "passage": "When William Kamkwamba was fourteen years old, a terrible drought hit his village in Malawi, a\nsmall country in southern Africa. The crops failed, food became scarce, and William's family could\nno longer afford his school fees. Instead of giving up, William went to the small village library and\ntaught himself from old science books. One book, called Using Energy, had a picture of a windmill\non its cover. William realised that a windmill could pump water for the fields and produce\nelectricity for his home.\nHe began collecting scrap materials: a broken bicycle, plastic pipes, an old tractor fan and some\nwire. Many villagers laughed at him and called him crazy. But after months of work, William\nclimbed his wooden tower, connected the wires, and a small light bulb began to glow. It was the\nfirst electric light his village had ever seen.\n\n\nNews of the windmill spread quickly. Journalists came to visit, and William was invited to speak at\nconferences around the world. He later received a scholarship and graduated from an American\nuniversity. Today, William helps other young people in Africa build their own inventions. \"If you\nwant to make it, all you have to do is try,\" he says.",
+    "source": "PDF luyện lớp 6 · câu 34",
+    "level": 2
+  },
+  {
+    "id": "pdf-35",
+    "category": "reading",
+    "prompt": "Who can take part in the Summer Reading Challenge?",
+    "choices": [
+      "Anyone who lives in Greenwood",
+      "Children between 8 and 13 years old",
+      "Students who have a library card",
+      "Only children who register online"
+    ],
+    "answer": 1,
+    "explanation": "Thông báo ghi rõ readers aged 8–13.",
+    "passage": "GREENWOOD PUBLIC LIBRARY – SUMMER READING CHALLENGE 2026\nCalling all readers aged 8–13! Join our Summer Reading Challenge and win exciting prizes.\nHow it works\n1. Register at the front desk or online at www.greenwoodlibrary.org by 15 June.\n2. Read at least six books between 20 June and 20 August.\n3. For each book you finish, write a short review (50–100 words) in your Reading Passport.\n4. Hand in your Passport by 25 August.\nPrizes\n• 6 books: a certificate and a Greenwood bookmark\n• 10 books: certificate + a £10 book voucher\n• 15 books or more: certificate + voucher + an invitation to our Author Day on 5 September, where\n\n\nyou can meet children's author Maya Lindqvist and get your book signed.\nPlease note: Comics and graphic novels count as one book each. Audiobooks are accepted, but\nonly up to three. Late Passports will not be accepted. For more information, ask a librarian or\nemail reading@greenwoodlibrary.org.",
+    "source": "PDF luyện lớp 6 · câu 35",
+    "level": 2
+  },
+  {
+    "id": "pdf-36",
+    "category": "reading",
+    "prompt": "What is the LAST day to register?",
+    "choices": [
+      "15 June",
+      "20 June",
+      "20 August",
+      "25 August"
+    ],
+    "answer": 0,
+    "explanation": "Bản nhập đã đổi before thành by 15 June để tránh mâu thuẫn đáp án trong PDF. By bao gồm ngày 15/6.",
+    "passage": "GREENWOOD PUBLIC LIBRARY – SUMMER READING CHALLENGE 2026\nCalling all readers aged 8–13! Join our Summer Reading Challenge and win exciting prizes.\nHow it works\n1. Register at the front desk or online at www.greenwoodlibrary.org by 15 June.\n2. Read at least six books between 20 June and 20 August.\n3. For each book you finish, write a short review (50–100 words) in your Reading Passport.\n4. Hand in your Passport by 25 August.\nPrizes\n• 6 books: a certificate and a Greenwood bookmark\n• 10 books: certificate + a £10 book voucher\n• 15 books or more: certificate + voucher + an invitation to our Author Day on 5 September, where\n\n\nyou can meet children's author Maya Lindqvist and get your book signed.\nPlease note: Comics and graphic novels count as one book each. Audiobooks are accepted, but\nonly up to three. Late Passports will not be accepted. For more information, ask a librarian or\nemail reading@greenwoodlibrary.org.",
+    "source": "PDF luyện lớp 6 · câu 36",
+    "level": 2
+  },
+  {
+    "id": "pdf-37",
+    "category": "reading",
+    "prompt": "What must readers do after finishing each book?",
+    "choices": [
+      "Return it to the front desk",
+      "Email the librarian",
+      "Write a short review",
+      "Ask a librarian to sign it"
+    ],
+    "answer": 2,
+    "explanation": "Sau mỗi quyển, người đọc viết review dài 50–100 từ vào Reading Passport.",
+    "passage": "GREENWOOD PUBLIC LIBRARY – SUMMER READING CHALLENGE 2026\nCalling all readers aged 8–13! Join our Summer Reading Challenge and win exciting prizes.\nHow it works\n1. Register at the front desk or online at www.greenwoodlibrary.org by 15 June.\n2. Read at least six books between 20 June and 20 August.\n3. For each book you finish, write a short review (50–100 words) in your Reading Passport.\n4. Hand in your Passport by 25 August.\nPrizes\n• 6 books: a certificate and a Greenwood bookmark\n• 10 books: certificate + a £10 book voucher\n• 15 books or more: certificate + voucher + an invitation to our Author Day on 5 September, where\n\n\nyou can meet children's author Maya Lindqvist and get your book signed.\nPlease note: Comics and graphic novels count as one book each. Audiobooks are accepted, but\nonly up to three. Late Passports will not be accepted. For more information, ask a librarian or\nemail reading@greenwoodlibrary.org.",
+    "source": "PDF luyện lớp 6 · câu 37",
+    "level": 2
+  },
+  {
+    "id": "pdf-38",
+    "category": "reading",
+    "prompt": "Lily read 12 books and handed in her Passport on 24 August. What will she receive?",
+    "choices": [
+      "Only a certificate",
+      "A certificate and a bookmark",
+      "A certificate and a £10 voucher",
+      "A certificate, a voucher and an Author Day invitation"
+    ],
+    "answer": 2,
+    "explanation": "12 quyển đạt mốc 10 nhưng chưa đạt mốc 15: certificate + £10 voucher.",
+    "passage": "GREENWOOD PUBLIC LIBRARY – SUMMER READING CHALLENGE 2026\nCalling all readers aged 8–13! Join our Summer Reading Challenge and win exciting prizes.\nHow it works\n1. Register at the front desk or online at www.greenwoodlibrary.org by 15 June.\n2. Read at least six books between 20 June and 20 August.\n3. For each book you finish, write a short review (50–100 words) in your Reading Passport.\n4. Hand in your Passport by 25 August.\nPrizes\n• 6 books: a certificate and a Greenwood bookmark\n• 10 books: certificate + a £10 book voucher\n• 15 books or more: certificate + voucher + an invitation to our Author Day on 5 September, where\n\n\nyou can meet children's author Maya Lindqvist and get your book signed.\nPlease note: Comics and graphic novels count as one book each. Audiobooks are accepted, but\nonly up to three. Late Passports will not be accepted. For more information, ask a librarian or\nemail reading@greenwoodlibrary.org.",
+    "source": "PDF luyện lớp 6 · câu 38",
+    "level": 2
+  },
+  {
+    "id": "pdf-39",
+    "category": "reading",
+    "prompt": "Which of these statements is TRUE according to the notice?",
+    "choices": [
+      "Audiobooks are not allowed.",
+      "A graphic novel counts as half a book.",
+      "You can listen to up to three audiobooks.",
+      "Passports can be handed in after 25 August with a note."
+    ],
+    "answer": 2,
+    "explanation": "Thông báo cho phép audiobooks nhưng tối đa ba quyển.",
+    "passage": "GREENWOOD PUBLIC LIBRARY – SUMMER READING CHALLENGE 2026\nCalling all readers aged 8–13! Join our Summer Reading Challenge and win exciting prizes.\nHow it works\n1. Register at the front desk or online at www.greenwoodlibrary.org by 15 June.\n2. Read at least six books between 20 June and 20 August.\n3. For each book you finish, write a short review (50–100 words) in your Reading Passport.\n4. Hand in your Passport by 25 August.\nPrizes\n• 6 books: a certificate and a Greenwood bookmark\n• 10 books: certificate + a £10 book voucher\n• 15 books or more: certificate + voucher + an invitation to our Author Day on 5 September, where\n\n\nyou can meet children's author Maya Lindqvist and get your book signed.\nPlease note: Comics and graphic novels count as one book each. Audiobooks are accepted, but\nonly up to three. Late Passports will not be accepted. For more information, ask a librarian or\nemail reading@greenwoodlibrary.org.",
+    "source": "PDF luyện lớp 6 · câu 39",
+    "level": 2
+  },
+  {
+    "id": "pdf-40",
+    "category": "reading",
+    "prompt": "What is the main purpose of this notice?",
+    "choices": [
+      "To advertise a new book by Maya Lindqvist",
+      "To encourage children to read during the summer",
+      "To explain the library's opening hours",
+      "To sell book vouchers"
+    ],
+    "answer": 1,
+    "explanation": "Mục đích chung là khuyến khích trẻ đọc sách trong mùa hè; giải thưởng là động lực phụ.",
+    "passage": "GREENWOOD PUBLIC LIBRARY – SUMMER READING CHALLENGE 2026\nCalling all readers aged 8–13! Join our Summer Reading Challenge and win exciting prizes.\nHow it works\n1. Register at the front desk or online at www.greenwoodlibrary.org by 15 June.\n2. Read at least six books between 20 June and 20 August.\n3. For each book you finish, write a short review (50–100 words) in your Reading Passport.\n4. Hand in your Passport by 25 August.\nPrizes\n• 6 books: a certificate and a Greenwood bookmark\n• 10 books: certificate + a £10 book voucher\n• 15 books or more: certificate + voucher + an invitation to our Author Day on 5 September, where\n\n\nyou can meet children's author Maya Lindqvist and get your book signed.\nPlease note: Comics and graphic novels count as one book each. Audiobooks are accepted, but\nonly up to three. Late Passports will not be accepted. For more information, ask a librarian or\nemail reading@greenwoodlibrary.org.",
+    "source": "PDF luyện lớp 6 · câu 40",
+    "level": 2
+  }
+]
