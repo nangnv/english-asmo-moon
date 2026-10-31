@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 const bank=JSON.parse(fs.readFileSync('src/bank.json','utf8'));
 const css=fs.readFileSync('src/style.css','utf8');
-const client=fs.readFileSync('src/home.js','utf8')+'\n'+fs.readFileSync('src/app.js','utf8');
+const client=['src/home.js','src/lesson.js','src/app.js'].map(f=>fs.readFileSync(f,'utf8')).join('\n');
 // Mascots and medals are pre-sized WebP files (see their README.md), inlined so the Worker serves one page.
 const inlineImages=(dir,prefix=/^/)=>Object.fromEntries(fs.readdirSync(dir).filter(f=>f.endsWith('.webp')).map(f=>[f.replace(prefix,'').replace(/\.webp$/,''),'data:image/webp;base64,'+fs.readFileSync(dir+'/'+f).toString('base64')]));
 const mascot=inlineImages('src/mascot',/^asmo-/),medals=inlineImages('src/medals');

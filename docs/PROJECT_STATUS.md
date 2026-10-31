@@ -14,7 +14,7 @@ Giúp học sinh lớp 6 thích học tiếng Anh, biết lỗi sai, sửa đư�
 - Lưu localStorage, tiếp tục bài đang làm, xuất/nhập bản sao JSON.
 - Tách điểm lần đầu, câu có gợi ý và ôn lại; XP, sao, huy hiệu, đổi quà cùng gia đình.
 - Tích hợp OpenAI Responses API cho gợi ý, giải thích, chat và tạo bộ 4 câu.
-- Màn Home mới (nhánh `claude/home-redesign`, chưa merge/deploy): header ngang + thanh tab dưới trên điện thoại, mascot ASMO Moon (`src/mascot/`), mục tiêu ngày, bài đang học, luyện theo dạng bài, đề thi thử, tiến bộ tuần, gợi ý học tiếp. Mục tiêu tuần 5 ngày là mặc định trong `src/home.js`, chưa có cài đặt riêng. Hệ màu Lavender & Cream khai báo ở `:root` trong `src/style.css`; token cũ (`--green`, `--ink`…) được map sang token mới; mọi trang đã chuyển sang token, không còn màu hardcode ngoài `:root`. Trang Phần thưởng dùng 6 huy hiệu thật (`medals/`, bản WebP trong `src/medals/`).
+- Giao diện kiểu học-qua-trò-chơi (nhánh `claude/home-redesign`, chưa merge/deploy): Home là lộ trình 4 chặng theo kế hoạch, mỗi nút là một chế độ luyện có thật (đánh giá đầu vào, 4 kỹ năng, ôn lỗi, thi thử); màn làm bài một câu mỗi màn với thanh phản hồi đúng/sai, phím 1–4/Enter; màn kết quả có XP, độ chính xác, streak. Header hiển thị streak/XP/sao. Font Nunito, nút nổi khối, màu Lavender & Cream cùng màu nhấn cho từng kỹ năng (`:root` trong `src/style.css`). Mascot `src/mascot/`, huy hiệu `medals/` + `src/medals/`. Mục tiêu tuần 5 ngày là mặc định trong `src/home.js`. Trạng thái AI chưa sẵn sàng khóa nút gửi/gợi ý/tạo câu.
 - 12 kiểm thử tự động; luồng đánh giá đầu vào và bố cục điện thoại đã được kiểm tra ngày 29/10.
 
 ## Giới hạn đã biết

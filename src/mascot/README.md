@@ -8,3 +8,4 @@ Resized to 440×440 WebP (quality 84) with Pillow, keeping the full canvas, aspe
 - `asmo-study.webp` — returning learner, today's lesson
 - `asmo-correct.webp` — today's goal reached
 - `asmo-rest.webp` — no progress data yet
+- `asmo-try-again.webp` — wrong answer, encouraging result
