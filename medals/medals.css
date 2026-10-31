@@ -1,0 +1,9 @@
+.asmo-medal {
+  width: 128px;
+  height: 128px;
+  object-fit: contain;
+}
+.asmo-medal[data-locked="true"] {
+  filter: grayscale(1);
+  opacity: .38;
+}
