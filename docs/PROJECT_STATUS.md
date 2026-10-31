@@ -15,7 +15,8 @@ Giúp học sinh lớp 6 thích học tiếng Anh, biết lỗi sai, sửa đư�
 - Tách điểm lần đầu, câu có gợi ý và ôn lại; XP, sao, huy hiệu, đổi quà cùng gia đình.
 - Tích hợp OpenAI Responses API cho gợi ý, giải thích, chat và tạo bộ 4 câu.
 - Giao diện kiểu học-qua-trò-chơi (nhánh `claude/home-redesign`, chưa merge/deploy): Home là lộ trình 4 chặng theo kế hoạch, mỗi nút là một chế độ luyện có thật (đánh giá đầu vào, 4 kỹ năng, ôn lỗi, thi thử); màn làm bài một câu mỗi màn với thanh phản hồi đúng/sai, phím 1–4/Enter; màn kết quả có XP, độ chính xác, streak. Header hiển thị streak/XP/sao. Font Nunito, nút nổi khối, màu Lavender & Cream cùng màu nhấn cho từng kỹ năng (`:root` trong `src/style.css`). Mascot `src/mascot/`, huy hiệu `medals/` + `src/medals/`. Mục tiêu tuần 5 ngày là mặc định trong `src/home.js`. Trạng thái AI chưa sẵn sàng khóa nút gửi/gợi ý/tạo câu.
-- 12 kiểm thử tự động; luồng đánh giá đầu vào và bố cục điện thoại đã được kiểm tra ngày 29/10.
+- Bản sửa review `codex/home-redesign-fixes` (gộp vào `claude/home-redesign`, chưa merge `main`/deploy): Enter chấm bài khi focus ở đáp án đang chọn; Enter trên đáp án khác thì chọn đáp án đó trước. Phiên kết thúc sớm (`finish(true)`) không được tính hoàn thành; phiên lưu mới có trường `completed`, dữ liệu cũ suy ra từ nhãn "· phiên ngắn". Tên hồ sơ dài được rút gọn trong header.
+- 20 kiểm thử tự động (12 nền tảng, 8 hồi quy giao diện trong `tests/ui-regressions.test.mjs`). Ngày 31/10 đã kiểm tra trên Chrome headless: phím 1–4/Enter, kết thúc sớm bài đầu vào, header tên dài từ 320 đến 1440px.
 
 ## Giới hạn đã biết
 
