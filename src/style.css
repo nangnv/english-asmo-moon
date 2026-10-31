@@ -49,3 +49,6 @@ body.in-lesson .site-header,body.in-lesson footer,body.in-lesson #nav{display:no
 @media(max-width:760px){.badge-medal{width:88px;height:88px}}@media(max-width:560px){.badge-grid{grid-template-columns:1fr 1fr}}
 .ai-unready{background:var(--warning-bg);border:1px solid var(--warning-border);border-radius:14px;padding:14px 16px;margin-top:16px;color:var(--warning-fg)}.ai-unready strong{display:block;font-size:14px}.ai-unready strong:before{content:'! ';font-weight:800}.ai-unready p{margin:4px 0 0;font-size:13px;line-height:1.6;color:var(--warning-fg)}.quick-prompts button:disabled{cursor:not-allowed}
 textarea:disabled,input:disabled,select:disabled{background:var(--surface-soft);border-color:var(--border);color:var(--text-secondary);cursor:not-allowed}
+
+/* Keep a long editable student name from pushing navigation out of the header. */
+.profile{flex:0 1 auto;min-width:0;max-width:220px}.profile summary{min-width:0}.profile-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.profile .avatar,.profile-caret{flex-shrink:0}
