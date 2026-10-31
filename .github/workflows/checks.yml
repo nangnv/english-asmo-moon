@@ -1,0 +1,22 @@
+name: Checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Tests
+        run: npm test
+      - name: Build
+        run: npm run build
+      - name: Validate Worker
+        run: npm run validate
+      - name: Check generated Worker is current
+        run: git diff --exit-code -- worker/index.js
