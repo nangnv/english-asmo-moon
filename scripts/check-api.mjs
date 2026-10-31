@@ -1,0 +1,3 @@
+import fs from 'node:fs';
+const text=fs.readFileSync('.env.local','utf8');const key=text.match(/^OPENAI_API_KEY=(.*)$/m)?.[1].replace(/^['"]|['"]$/g,'');
+try{const r=await fetch('https://api.openai.com/v1/responses',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+key},body:JSON.stringify({model:'gpt-4.1-mini',store:false,max_output_tokens:20,input:'Reply with OK only.'})});const d=await r.json();console.log(JSON.stringify({status:r.status,errorCode:d.error?.code,errorType:d.error?.type,message:d.error?.message?.replace(/sk-[A-Za-z0-9_-]+/g,'[REDACTED]'),hasOutput:Boolean(d.output?.length)}));}catch(e){console.log(JSON.stringify({networkError:e.cause?.code||e.name}));process.exitCode=1;}
