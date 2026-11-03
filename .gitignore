@@ -13,3 +13,4 @@ __pycache__/
 
 .openai/hosting.json
 reference/*.pdf
+.wrangler/

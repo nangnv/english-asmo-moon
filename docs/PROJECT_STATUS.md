@@ -18,6 +18,8 @@ Giúp học sinh lớp 6 thích học tiếng Anh, biết lỗi sai, sửa đư�
 - Bản sửa review `codex/home-redesign-fixes` (gộp vào `claude/home-redesign`, chưa merge `main`/deploy): Enter chấm bài khi focus ở đáp án đang chọn; Enter trên đáp án khác thì chọn đáp án đó trước. Phiên kết thúc sớm (`finish(true)`) không được tính hoàn thành; phiên lưu mới có trường `completed`, dữ liệu cũ suy ra từ nhãn "· phiên ngắn". Tên hồ sơ dài được rút gọn trong header.
 - 20 kiểm thử tự động (12 nền tảng, 8 hồi quy giao diện trong `tests/ui-regressions.test.mjs`). Ngày 31/10 đã kiểm tra trên Chrome headless: phím 1–4/Enter, kết thúc sớm bài đầu vào, header tên dài từ 320 đến 1440px.
 
+- Hosting Cloudflare (nhánh `claude/cloudflare-hosting`, **chưa deploy, chưa có tài khoản Cloudflare/Google OAuth thật**): Worker bật chế độ đăng nhập Google khi có binding D1; chỉ email trong secret `ACCOUNTS` vào được; phiên cookie `HttpOnly`/`Secure` 30 ngày, D1 chỉ lưu bản băm; tiến độ học sinh lưu lên D1 có version, xung đột giữa hai máy được gộp; phụ huynh chỉ xem. Đã kiểm thử bằng SQLite và Google giả lập (`tests/cloud.test.mjs`) cùng trình duyệt thật với phiên tạo sẵn; chưa kiểm tra luồng Google OAuth thật. Hướng dẫn: `docs/DEPLOY_CLOUDFLARE.md`.
+
 ## Giới hạn đã biết
 
 - Chưa có Google login trực tiếp hoặc tên đăng nhập/mật khẩu riêng của app.
@@ -33,7 +35,7 @@ Giúp học sinh lớp 6 thích học tiếng Anh, biết lỗi sai, sửa đư�
 
 ### P1 — Đăng nhập độc lập
 
-Người dùng muốn con đăng nhập Google trực tiếp mà không cần ChatGPT. Phương án đã thảo luận: Google OAuth + Supabase Auth. Đây là phương án đề xuất, chưa triển khai.
+Người dùng muốn con đăng nhập Google trực tiếp mà không cần ChatGPT. Ngày 03/11 người dùng chọn Cloudflare Workers + D1 + Google OAuth xử lý trong Worker (thay cho Supabase), tạm dùng miền `*.workers.dev`, quyền học sinh + phụ huynh chỉ xem. Mã đã có trên nhánh `claude/cloudflare-hosting`; còn chờ phụ huynh tạo tài khoản Cloudflare, OAuth client Google, rồi deploy và kiểm tra theo `docs/DEPLOY_CLOUDFLARE.md`.
 
 Tiêu chí hoàn thành:
 
