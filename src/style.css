@@ -52,3 +52,7 @@ textarea:disabled,input:disabled,select:disabled{background:var(--surface-soft);
 
 /* Keep a long editable student name from pushing navigation out of the header. */
 .profile{flex:0 1 auto;min-width:0;max-width:220px}.profile summary{min-width:0}.profile-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.profile .avatar,.profile-caret{flex-shrink:0}
+
+/* Account (Cloudflare hosting): who is signed in, sync state, and the parent's view-only banner. */
+.account-box{display:grid;gap:8px;border-top:2px solid var(--border);padding-top:10px}.account-box[hidden]{display:none}.account-box p{margin:0}.account-who{display:grid;font-size:13px;line-height:1.5}.account-who span{color:var(--text-secondary);overflow-wrap:anywhere}.account-sync{font-size:13px;font-weight:800;color:var(--text-secondary)}.account-sync.saved{color:var(--success-fg)}.account-sync.offline,.account-sync.expired{color:var(--warning-fg)}.account-box form{margin:0}.account-box .btn{width:100%}
+.view-banner{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;background:var(--warning-bg);border:2px solid var(--warning-border);color:var(--warning-fg);border-radius:16px;padding:12px 16px;margin-bottom:20px;font-size:14px}.view-banner strong{font-size:15px}

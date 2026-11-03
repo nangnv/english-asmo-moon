@@ -34,6 +34,8 @@ export function currentStreak(s,today=dayKey()){
  if(days[0]!==today&&days[0]!==dayKey(yesterday))return 0;
  let n=1;for(let i=1;i<days.length;i++){if((Date.parse(days[i-1])-Date.parse(days[i]))/86400000!==1)break;n++;}return n;
 }
+// Shared by the browser (backups, AI questions) and the Worker (synced progress).
+export function validQuestion(q){return q&&typeof q.id==='string'&&q.id.length<100&&Object.hasOwn(CATEGORIES,q.category)&&typeof q.prompt==='string'&&q.prompt.length<2500&&Array.isArray(q.choices)&&q.choices.length===4&&q.choices.every(x=>typeof x==='string'&&x.length<1000)&&Number.isInteger(q.answer)&&q.answer>=0&&q.answer<4&&typeof q.explanation==='string'&&typeof q.passage==='string';}
 export function validateBackup(s,bank){
  if(!s||s.version!==1||!s.profile||typeof s.profile.name!=='string'||s.profile.name.length>40||!/^\d{4}-\d{2}-\d{2}$/.test(s.profile.examDate)||!Number.isFinite(Date.parse(s.profile.examDate))||!Number.isInteger(s.profile.minutes)||s.profile.minutes<5||s.profile.minutes>60)throw Error('Hồ sơ không hợp lệ.');
  if(!s.answers||typeof s.answers!=='object'||Array.isArray(s.answers)||!Array.isArray(s.sessions)||s.sessions.length>10000||!Array.isArray(s.redemptions)||!Array.isArray(s.lessonDays)||!s.reward||typeof s.reward.name!=='string'||s.reward.name.length>120||!Number.isInteger(s.reward.cost)||s.reward.cost<10||s.reward.cost>10000)throw Error('Dữ liệu sao lưu không hợp lệ.');
