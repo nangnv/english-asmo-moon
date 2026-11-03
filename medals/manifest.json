@@ -1,0 +1,56 @@
+[
+  {
+    "id": "01-first-steps",
+    "title": "Bước đầu tiên",
+    "condition": "Hoàn thành phiên học đầu tiên",
+    "file": "01-first-steps.png",
+    "width": 1254,
+    "height": 1254,
+    "transparent": true
+  },
+  {
+    "id": "02-learning-rhythm",
+    "title": "Nhịp học đều đặn",
+    "condition": "Học trong 3 ngày khác nhau",
+    "file": "02-learning-rhythm.png",
+    "width": 1254,
+    "height": 1254,
+    "transparent": true
+  },
+  {
+    "id": "03-answer-finder",
+    "title": "Người tìm đáp án",
+    "condition": "Tự làm đúng 10 câu mới",
+    "file": "03-answer-finder.png",
+    "width": 1254,
+    "height": 1254,
+    "transparent": true
+  },
+  {
+    "id": "04-mistake-fixer",
+    "title": "Thợ sửa lỗi",
+    "condition": "Chinh phục lại 5 lỗi sai",
+    "file": "04-mistake-fixer.png",
+    "width": 1254,
+    "height": 1254,
+    "transparent": true
+  },
+  {
+    "id": "05-knowledge-explorer",
+    "title": "Nhà khám phá",
+    "condition": "Đã gặp ít nhất 30 câu",
+    "file": "05-knowledge-explorer.png",
+    "width": 1254,
+    "height": 1254,
+    "transparent": true
+  },
+  {
+    "id": "06-unstoppable",
+    "title": "Không ngừng tiến bước",
+    "condition": "Tích lũy 300 XP",
+    "file": "06-unstoppable.png",
+    "width": 1254,
+    "height": 1254,
+    "transparent": true
+  }
+]
