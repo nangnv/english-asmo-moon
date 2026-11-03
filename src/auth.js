@@ -1,11 +1,14 @@
-// Cloudflare hosting: Google sign-in for family-approved emails, cookie sessions and synced progress in D1.
+// Cloudflare hosting: family passwords (AUTH_MODE=password) or Google sign-in for approved emails, cookie sessions and synced progress in D1.
 // Cloud mode is on whenever a D1 binding exists, so a misconfigured deploy fails closed instead of trusting Sites headers.
 const SESSION_COOKIE='__Host-asmo-session',OAUTH_COOKIE='__Host-asmo-oauth',SESSION_DAYS=30,MAX_PROGRESS=1000000;
 const pageHeaders={'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'strict-origin-when-cross-origin','Permissions-Policy':'camera=(), microphone=(), geolocation=()','Content-Security-Policy':"default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'self'; frame-ancestors 'none'"};
-function cloudMode(env){return env.AUTH_MODE==='google'||Boolean(env.DB);}
+function cloudMode(env){return env.AUTH_MODE==='google'||env.AUTH_MODE==='password'||Boolean(env.DB);}
+const passwordMode=env=>env.AUTH_MODE==='password';
+const ROLE_PASSWORD={student:'STUDENT_PASSWORD',parent:'PARENT_PASSWORD'};
+const LOGIN_LIMITS=[['ip',5,15*60000],['all',100,60*60000]];
 // ACCOUNTS secret: "student:moon@gmail.com, parent:parent@gmail.com". Unknown roles are ignored.
-function accounts(env){const map=new Map();for(const part of String(env.ACCOUNTS||'').split(',')){const m=part.trim().match(/^(student|parent):(\S+@\S+)$/i);if(m)map.set(m[2].toLowerCase(),m[1].toLowerCase());}return map;}
-function cloudReady(env){return Boolean(env.DB&&env.GOOGLE_CLIENT_ID&&env.GOOGLE_CLIENT_SECRET&&[...accounts(env).values()].includes('student'));}
+function accounts(env){if(passwordMode(env))return new Map(Object.keys(ROLE_PASSWORD).filter(role=>env[ROLE_PASSWORD[role]]).map(role=>[role,role]));const map=new Map();for(const part of String(env.ACCOUNTS||'').split(',')){const m=part.trim().match(/^(student|parent):(\S+@\S+)$/i);if(m)map.set(m[2].toLowerCase(),m[1].toLowerCase());}return map;}
+function cloudReady(env){if(passwordMode(env))return Boolean(env.DB&&env.STUDENT_PASSWORD&&env.STUDENT_PASSWORD!==env.PARENT_PASSWORD);return Boolean(env.DB&&env.GOOGLE_CLIENT_ID&&env.GOOGLE_CLIENT_SECRET&&[...accounts(env).values()].includes('student'));}
 const b64url=bytes=>btoa(String.fromCharCode(...bytes)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
 const randomToken=()=>b64url(crypto.getRandomValues(new Uint8Array(32)));
 const sha256=async text=>new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text)));
@@ -13,19 +16,53 @@ const hashHex=async text=>[...await sha256(text)].map(b=>b.toString(16).padStart
 function cookies(request){const out={};for(const part of (request.headers.get('cookie')||'').split(';')){const i=part.indexOf('=');if(i>0)out[part.slice(0,i).trim()]=part.slice(i+1).trim();}return out;}
 const cookie=(name,value,maxAge)=>name+'='+value+'; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age='+maxAge;
 const sameOrigin=(request,url)=>request.headers.get('origin')===url.origin;
+// The session identity includes a fingerprint of the password, so changing a password ends its sessions.
+async function passwordIdentity(env,role){const password=env[ROLE_PASSWORD[role]];return password?role+'#'+(await hashHex('session:'+password)).slice(0,16):null;}
+async function sameSecret(a,b){const x=await sha256(a),y=await sha256(b);let diff=0;for(let i=0;i<x.length;i++)diff|=x[i]^y[i];return diff===0;}
+const limitKeys=async request=>['ip:'+await hashHex(request.headers.get('cf-connecting-ip')||'unknown'),'all'];
+async function loginBlocked(env,keys){
+ const now=Date.now();
+ for(let i=0;i<keys.length;i++){const row=await env.DB.prepare('SELECT count,window_start FROM login_failures WHERE key=?').bind(keys[i]).first();if(row&&now-row.window_start<LOGIN_LIMITS[i][2]&&row.count>=LOGIN_LIMITS[i][1])return true;}
+ return false;
+}
+async function recordFailure(env,keys){
+ const now=Date.now();
+ for(let i=0;i<keys.length;i++)await env.DB.prepare('INSERT INTO login_failures (key,count,window_start) VALUES (?,1,?) ON CONFLICT(key) DO UPDATE SET count=CASE WHEN ?-window_start>=? THEN 1 ELSE count+1 END,window_start=CASE WHEN ?-window_start>=? THEN ? ELSE window_start END').bind(keys[i],now,now,LOGIN_LIMITS[i][2],now,LOGIN_LIMITS[i][2],now).run();
+}
 async function currentUser(request,env){
  const token=cookies(request)[SESSION_COOKIE];if(!token||!env.DB||token.length>100)return null;
  const row=await env.DB.prepare('SELECT email FROM sessions WHERE token_hash=? AND expires_at>?').bind(await hashHex(token),Date.now()).first();
+ if(passwordMode(env)){if(row)for(const role of Object.keys(ROLE_PASSWORD))if(row.email===await passwordIdentity(env,role))return {email:role,role};return null;}
  // Roles come from the current ACCOUNTS secret, so removing an email revokes its live sessions.
  const role=row&&accounts(env).get(row.email);return role?{email:row.email,role}:null;
 }
 function authPage(title,body,status=200,headers={}){
- const html='<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+title+' · ASMO English</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet"><style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#FCFAFF;color:#302638;font:600 16px/1.6 Nunito,system-ui,sans-serif;padding:24px;box-sizing:border-box}main{box-sizing:border-box;background:#fff;border:2px solid #E8E0EF;border-radius:24px;max-width:420px;width:100%;padding:36px 28px;text-align:center}.mark{display:inline-grid;place-items:center;width:56px;height:56px;border-radius:16px;background:#7C3FCB;color:#fff;font-size:28px;font-weight:900;box-shadow:0 4px 0 #54278E}h1{font-size:26px;line-height:1.25;margin:18px 0 8px;font-weight:900}p{color:#756B80;margin:0 0 22px}.btn{display:inline-block;background:#7C3FCB;color:#fff;text-decoration:none;font-weight:800;padding:14px 26px;border-radius:16px;box-shadow:0 4px 0 #54278E}.btn:active{transform:translateY(4px);box-shadow:none}.btn:focus-visible{outline:3px solid #7C3FCB;outline-offset:3px}small{display:block;margin-top:22px;color:#756B80;font-size:13px}</style></head><body><main><span class="mark" aria-hidden="true">A</span>'+body+'</main></body></html>';
+ const html='<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+title+' · ASMO English</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet"><style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#FCFAFF;color:#302638;font:600 16px/1.6 Nunito,system-ui,sans-serif;padding:24px;box-sizing:border-box}main{box-sizing:border-box;background:#fff;border:2px solid #E8E0EF;border-radius:24px;max-width:420px;width:100%;padding:36px 28px;text-align:center}.mark{display:inline-grid;place-items:center;width:56px;height:56px;border-radius:16px;background:#7C3FCB;color:#fff;font-size:28px;font-weight:900;box-shadow:0 4px 0 #54278E}h1{font-size:26px;line-height:1.25;margin:18px 0 8px;font-weight:900}p{color:#756B80;margin:0 0 22px}.btn{display:inline-block;background:#7C3FCB;color:#fff;text-decoration:none;font-weight:800;padding:14px 26px;border-radius:16px;box-shadow:0 4px 0 #54278E}.btn:active{transform:translateY(4px);box-shadow:none}.btn:focus-visible{outline:3px solid #7C3FCB;outline-offset:3px}small{display:block;margin-top:22px;color:#756B80;font-size:13px}form{display:grid;gap:12px;text-align:left}label{font-weight:800}input{box-sizing:border-box;width:100%;font:600 16px Nunito,system-ui,sans-serif;padding:13px 14px;border:2px solid #E8E0EF;border-radius:14px;color:#302638}input:focus-visible{outline:3px solid #7C3FCB;outline-offset:2px}button.btn{border:0;font:800 16px Nunito,system-ui,sans-serif;cursor:pointer;text-align:center}</style></head><body><main><span class="mark" aria-hidden="true">A</span>'+body+'</main></body></html>';
  return new Response(html,{status,headers:{...pageHeaders,...headers}});
 }
 const loginPage=(note='',headers={})=>authPage('Đăng nhập','<h1>Chào mừng đến ASMO English</h1><p>'+(note||'Đăng nhập bằng tài khoản Google gia đình đã đăng ký để học tiếp và lưu tiến độ.')+'</p><a class="btn" href="/auth/login">Đăng nhập bằng Google</a><small>Chỉ những email gia đình cho phép mới vào được.</small>',200,headers);
+const passwordPage=(note='',status=200,headers={})=>authPage('Đăng nhập','<h1>Chào mừng đến ASMO English</h1><p'+(note?' role="alert"':'')+'>'+(note||'Nhập mật khẩu gia đình để học tiếp và lưu tiến độ.')+'</p><form method="post" action="/auth/password"><label for="password">Mật khẩu</label><input id="password" name="password" type="password" autocomplete="current-password" autocapitalize="off" autocorrect="off" spellcheck="false" maxlength="200" required autofocus><button class="btn" type="submit">Vào học</button></form>',status,headers);
+const signInPage=env=>!passwordMode(env)?loginPage():cloudReady(env)?passwordPage():authPage('Chưa cấu hình','<h1>Đăng nhập chưa được cấu hình</h1><p>Phụ huynh cần đặt mật khẩu theo hướng dẫn triển khai.</p>',503);
 const redirect=(location,headers={})=>new Response(null,{status:303,headers:{Location:location,'Cache-Control':'no-store',...headers}});
 async function handleAuth(request,env,url){
+ if(passwordMode(env)){
+  if(url.pathname==='/auth/password'&&request.method==='POST'){
+   if(!sameOrigin(request,url))return new Response('Forbidden',{status:403});
+   if(!cloudReady(env))return signInPage(env);
+   const keys=await limitKeys(request);
+   if(await loginBlocked(env,keys))return passwordPage('Nhập sai nhiều lần rồi. Đợi khoảng 15 phút rồi thử lại nhé.',429,{'Retry-After':'900'});
+   let password=null;try{password=(await request.formData()).get('password');}catch{}
+   let role=null;
+   if(typeof password==='string'&&password.length<=200)for(const r of Object.keys(ROLE_PASSWORD))if(env[ROLE_PASSWORD[r]]&&await sameSecret(password,env[ROLE_PASSWORD[r]]))role=r;
+   if(!role){await recordFailure(env,keys);return passwordPage('Mật khẩu chưa đúng. Thử lại nhé.',401);}
+   const token=randomToken(),now=Date.now();
+   await env.DB.prepare('DELETE FROM sessions WHERE expires_at<?').bind(now).run();
+   await env.DB.prepare('DELETE FROM login_failures WHERE key=?').bind(keys[0]).run();
+   await env.DB.prepare('INSERT INTO sessions (token_hash,email,created_at,expires_at) VALUES (?,?,?,?)').bind(await hashHex(token),await passwordIdentity(env,role),now,now+SESSION_DAYS*86400000).run();
+   return redirect('/',{'Set-Cookie':cookie(SESSION_COOKIE,token,SESSION_DAYS*86400)});
+  }
+  if(url.pathname==='/auth/login'||url.pathname==='/auth/callback')return redirect('/');
+ }
  if(url.pathname==='/auth/login'&&request.method==='GET'){
   if(!cloudReady(env))return authPage('Chưa cấu hình','<h1>Đăng nhập chưa được cấu hình</h1><p>Phụ huynh cần hoàn tất cấu hình Google và cơ sở dữ liệu theo hướng dẫn triển khai.</p>',503);
   const state=randomToken(),verifier=randomToken(),challenge=b64url(await sha256(verifier));

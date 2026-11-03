@@ -32,7 +32,7 @@ function accountBox(){
  const box=$('#account-box');if(!box||account.mode!=='cloud')return;
  const text={saved:'✓ Đã lưu vào tài khoản',saving:'Đang lưu…',offline:'Chưa lưu được, sẽ thử lại khi có mạng',expired:'Phiên đăng nhập đã hết hạn',error:'Chưa tải được tiến độ từ tài khoản'}[account.status]||'';
  box.hidden=false;$('#local-note').hidden=true;
- box.innerHTML='<p class="account-who"><strong>'+(account.role==='parent'?'Phụ huynh':'Học sinh')+'</strong><span>'+esc(account.email)+'</span></p>'+(account.readOnly?'':'<p class="account-sync '+account.status+'">'+text+'</p>')+(account.status==='expired'?'<a class="btn small" href="/auth/login">Đăng nhập lại</a>':'<form method="post" action="/auth/logout"><button class="btn ghost small" type="submit">Đăng xuất</button></form>');
+ box.innerHTML='<p class="account-who"><strong>'+(account.role==='parent'?'Phụ huynh':'Học sinh')+'</strong>'+(account.email.includes('@')?'<span>'+esc(account.email)+'</span>':'')+'</p>'+(account.readOnly?'':'<p class="account-sync '+account.status+'">'+text+'</p>')+(account.status==='expired'?'<a class="btn small" href="/auth/login">Đăng nhập lại</a>':'<form method="post" action="/auth/logout"><button class="btn ghost small" type="submit">Đăng xuất</button></form>');
 }
 function syncSoon(){
  // Before the account answers (or while the family decides about this device's old progress) only mark work as unsaved.
@@ -71,7 +71,7 @@ function askToUpload(d,local){
  const count=local.sessions.length;account.awaitingChoice=true;
  // Keep the device's old progress recoverable whichever button is chosen.
  try{localStorage.setItem(STORAGE+'-before-sync',JSON.stringify(local));}catch{}
- modal(d.data?'Gộp tiến độ trên máy này?':'Lưu tiến độ trên máy này vào tài khoản?','<p>Trình duyệt này đang có <strong>'+count+' phiên học</strong> chưa gắn với tài khoản <strong>'+esc(account.email)+'</strong>.'+(d.data?' Tài khoản đã có tiến độ riêng; gộp sẽ thêm các phiên và câu trả lời của máy này vào.':'')+'</p><p>Chỉ chọn nếu đây là tiến độ của chính con.</p>','<button class="btn" id="upload-local">'+(d.data?'Gộp vào tài khoản':'Lưu vào tài khoản')+'</button><button class="btn secondary" id="skip-local">'+(d.data?'Dùng tiến độ trên tài khoản':'Bắt đầu mới')+'</button>');
+ modal(d.data?'Gộp tiến độ trên máy này?':'Lưu tiến độ trên máy này vào tài khoản?','<p>Trình duyệt này đang có <strong>'+count+' phiên học</strong> chưa gắn với tài khoản của con.'+(d.data?' Tài khoản đã có tiến độ riêng; gộp sẽ thêm các phiên và câu trả lời của máy này vào.':'')+'</p><p>Chỉ chọn nếu đây là tiến độ của chính con.</p>','<button class="btn" id="upload-local">'+(d.data?'Gộp vào tài khoản':'Lưu vào tài khoản')+'</button><button class="btn secondary" id="skip-local">'+(d.data?'Dùng tiến độ trên tài khoản':'Bắt đầu mới')+'</button>');
  $('#dialog').oncancel=e=>e.preventDefault();
  const done=()=>{account.awaitingChoice=false;$('#dialog').oncancel=null;closeModal();};
  $('#upload-local').onclick=()=>{done();if(d.data)adopt(mergeProgress(d.data,local));save();render();toast('Đang lưu tiến độ vào tài khoản.');};

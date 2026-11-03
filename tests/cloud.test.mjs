@@ -129,3 +129,76 @@ test('without Cloudflare bindings the Sites/local behaviour is unchanged',async(
   assert.equal((await worker.fetch(get('/api/progress'),{})).status,404);
   assert.match(await (await worker.fetch(get('/'),{})).text(),/const BANK/);
 });
+
+// Family-password mode. These passwords are fixtures, not real ones.
+const pwEnv=(db=(()=>{const x=d1();x.raw.exec(fs.readFileSync('migrations/0002_login_failures.sql','utf8'));return x;})())=>({DB:db,AUTH_MODE:'password',STUDENT_PASSWORD:'fixture-student-pass',PARENT_PASSWORD:'fixture-parent-pass'});
+const pwLogin=(password,{origin=ORIGIN,ip='203.0.113.1'}={})=>new Request(ORIGIN+'/auth/password',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded',Origin:origin,'cf-connecting-ip':ip},body:new URLSearchParams({password})});
+
+test('password mode shows the form and no Google route starts a login',async()=>{
+  const env=pwEnv();const html=await (await worker.fetch(get('/'),env)).text();
+  assert.match(html,/type="password"/);assert.doesNotMatch(html,/const BANK/);
+  assert.equal((await worker.fetch(get('/auth/login'),env)).headers.get('location'),'/');
+});
+
+test('each password opens its role; the session is hashed and contains no password',async()=>{
+  const env=pwEnv();
+  const student=cookieOf(await worker.fetch(pwLogin('fixture-student-pass'),env),'__Host-asmo-session');
+  const parent=cookieOf(await worker.fetch(pwLogin('fixture-parent-pass'),env),'__Host-asmo-session');
+  assert.equal((await (await worker.fetch(get('/api/progress',student),env)).json()).role,'student');
+  const view=await (await worker.fetch(get('/api/progress',parent),env)).json();
+  assert.deepEqual([view.role,view.readOnly],['parent',true]);
+  assert.equal((await worker.fetch(put(student,{baseVersion:0,data:progress}),env)).status,200);
+  assert.equal((await worker.fetch(put(parent,{baseVersion:1,data:progress}),env)).status,403);
+  const dump=JSON.stringify(env.DB.raw.prepare('SELECT * FROM sessions').all());
+  assert.doesNotMatch(dump,/fixture-/);assert.ok(!dump.includes(student.split('=')[1]));
+});
+
+test('wrong passwords, other origins and a missing password get no session',async()=>{
+  const env=pwEnv();
+  const wrong=await worker.fetch(pwLogin('nope'),env);
+  assert.equal(wrong.status,401);assert.equal(cookieOf(wrong,'__Host-asmo-session'),undefined);
+  assert.equal((await worker.fetch(pwLogin('fixture-student-pass',{origin:'https://evil.test'}),env)).status,403);
+  assert.equal((await worker.fetch(new Request(ORIGIN+'/auth/password',{method:'POST',headers:{Origin:ORIGIN}}),env)).status,401);
+  assert.equal(env.DB.raw.prepare('SELECT count(*) AS n FROM sessions').get().n,0);
+});
+
+test('five failures block that IP, even with the right password, but not other IPs',async()=>{
+  const env=pwEnv();
+  for(let i=0;i<5;i++)assert.equal((await worker.fetch(pwLogin('nope'),env)).status,401);
+  const blocked=await worker.fetch(pwLogin('fixture-student-pass'),env);
+  assert.equal(blocked.status,429);assert.equal(cookieOf(blocked,'__Host-asmo-session'),undefined);
+  assert.equal((await worker.fetch(pwLogin('fixture-student-pass',{ip:'203.0.113.2'}),env)).status,303);
+  assert.doesNotMatch(JSON.stringify(env.DB.raw.prepare('SELECT key FROM login_failures').all()),/203\.0\.113/);
+});
+
+test('failures across many IPs hit the overall limit; the IP limit window expires',async()=>{
+  const env=pwEnv();
+  for(let i=0;i<100;i++)await worker.fetch(pwLogin('nope',{ip:'198.51.100.'+(i%250)+'.'+i}),env);
+  assert.equal((await worker.fetch(pwLogin('fixture-student-pass',{ip:'203.0.113.9'}),env)).status,429);
+  const other=pwEnv();
+  for(let i=0;i<5;i++)await worker.fetch(pwLogin('nope'),other);
+  other.DB.raw.exec('UPDATE login_failures SET window_start=window_start-'+(16*60000));
+  assert.equal((await worker.fetch(pwLogin('fixture-student-pass'),other)).status,303);
+});
+
+test('changing a password ends its sessions; the other role stays signed in',async()=>{
+  const env=pwEnv();
+  const student=cookieOf(await worker.fetch(pwLogin('fixture-student-pass'),env),'__Host-asmo-session');
+  const parent=cookieOf(await worker.fetch(pwLogin('fixture-parent-pass'),env),'__Host-asmo-session');
+  const changed={...env,STUDENT_PASSWORD:'fixture-student-new'};
+  assert.equal((await worker.fetch(get('/api/progress',student),changed)).status,401);
+  assert.equal((await worker.fetch(get('/api/progress',parent),changed)).status,200);
+});
+
+test('missing or identical passwords fail closed',async()=>{
+  const none=pwEnv();delete none.STUDENT_PASSWORD;
+  assert.equal((await worker.fetch(get('/'),none)).status,503);
+  assert.equal((await worker.fetch(pwLogin('fixture-parent-pass'),none)).status,503);
+  const same={...pwEnv(),PARENT_PASSWORD:'fixture-student-pass'};
+  assert.equal((await worker.fetch(pwLogin('fixture-student-pass'),same)).status,503);
+});
+
+test('AUTH_MODE alone also fails closed without a database',async()=>{
+  assert.equal((await worker.fetch(get('/'),{AUTH_MODE:'password',STUDENT_PASSWORD:'fixture-student-pass'})).status,503);
+  assert.equal((await worker.fetch(get('/api/progress',null,{'oai-authenticated-user-id':'spoof'}),{AUTH_MODE:'password'})).status,401);
+});

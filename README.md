@@ -40,7 +40,7 @@ Server: `src/server.js`; UI: `src/index.html`, `src/style.css`, `src/app.js`; lo
 
 `node scripts/bundle.mjs` tạo Worker độc lập `worker/index.js`. `npm run build` xuất `dist/server/index.js` và manifest. Sites giữ website riêng tư, xác thực người dùng; endpoint AI cần `oai-authenticated-user-id`. Local preview chỉ bind 127.0.0.1 và cho phép dùng key cục bộ.
 
-Hosting riêng trên Cloudflare (đăng nhập Google, lưu tiến độ theo tài khoản trên D1): xem [docs/DEPLOY_CLOUDFLARE.md](docs/DEPLOY_CLOUDFLARE.md). Mã nằm ở `src/auth.js` (server) và `src/account.js` (đồng bộ phía trình duyệt); chế độ này tự bật khi Worker có binding D1, còn Sites và chạy local giữ nguyên.
+Hosting riêng trên Cloudflare (đăng nhập bằng mật khẩu gia đình, lưu tiến độ theo tài khoản trên D1): xem [docs/DEPLOY_CLOUDFLARE.md](docs/DEPLOY_CLOUDFLARE.md). Mã nằm ở `src/auth.js` (server) và `src/account.js` (đồng bộ phía trình duyệt); chế độ này tự bật khi Worker có binding D1, còn Sites và chạy local giữ nguyên.
 
 Runtime secrets: `OPENAI_API_KEY`; tùy chọn `OPENAI_MODEL` (mặc định `gpt-4.1-mini`). Thiết lập qua Sites secrets, không commit `.env.local`. Rate limit 12 lượt/phút/user trong từng Worker isolate, không phải giới hạn chi phí toàn hệ thống. API `store:false`; website không lưu trò chuyện trên server.
 

@@ -47,6 +47,6 @@ export default {async fetch(request,env={}){
  }catch(e){return json({error:e.name==='TimeoutError'?'AI đang mất nhiều thời gian. Thử lại sau nhé.':'Không kết nối được AI lúc này. Con có thể tiếp tục bài luyện có sẵn.'},502);}
  }
  if(url.pathname!=='/'||!['GET','HEAD'].includes(request.method))return new Response('Not found',{status:404});
- if(cloud&&!user)return loginPage();
+ if(cloud&&!user)return signInPage(env);
  return new Response(request.method==='HEAD'?null:page,{headers:pageHeaders});
 }};

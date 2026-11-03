@@ -1,19 +1,18 @@
 # Cloudflare Workers deployment. See docs/DEPLOY_CLOUDFLARE.md.
-# Secrets (GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, ACCOUNTS, OPENAI_API_KEY) are set with `wrangler secret put`, never here.
+# Secrets (STUDENT_PASSWORD, PARENT_PASSWORD, OPENAI_API_KEY) are set with `wrangler secret put`, never here.
 name = "asmo-english"
 main = "worker/index.js"
 compatibility_date = "2026-10-01"
 workers_dev = true
 
 [vars]
-AUTH_MODE = "google"
+AUTH_MODE = "password"
 OPENAI_MODEL = "gpt-4.1-mini"
 
 [[d1_databases]]
 binding = "DB"
 database_name = "asmo-english"
-# Replace with the id printed by `npx wrangler d1 create asmo-english` (an identifier, not a secret).
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_id = "e200ff66-5fa9-4414-a686-371c417c8dbe"
 migrations_dir = "migrations"
 
 [observability]
