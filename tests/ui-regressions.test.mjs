@@ -10,16 +10,16 @@ function app() {
   const document={querySelector:node,body:{classList:{toggle(){}}},addEventListener(name,handler){if(!events.has(name))events.set(name,[]);events.get(name).push(handler);}};
   const context=vm.createContext({document,console,Intl,Date,Math,JSON,Map,Set,Object,Array,String,Number,Boolean,Error,location:{hash:''},window:{scrollTo(){},addEventListener(){}},localStorage:{getItem(){return null;},setItem(){}},setTimeout(){},clearTimeout(){},setInterval(){},AbortSignal,structuredClone,fetch(){return new Promise(()=>{});},MASCOT:{},MEDALS:{},BANK:JSON.parse(fs.readFileSync('src/bank.json','utf8'))});
   // One script, like the bundle: client files share function hoisting.
-  vm.runInContext(['core.js','home.js','lesson.js','app.js','account.js'].map(file=>fs.readFileSync('src/'+file,'utf8').replaceAll('export ','')).join('\n'),context,{filename:'bundle.js'});
+  vm.runInContext(['core.js','home.js','lesson.js','app.js','dashboard.js','account.js'].map(file=>fs.readFileSync('src/'+file,'utf8').replaceAll('export ','')).join('\n'),context,{filename:'bundle.js'});
   return {run:code=>vm.runInContext(code,context),key(key,target){const e={key,target,altKey:false,ctrlKey:false,metaKey:false,defaultPrevented:false,preventDefault(){this.defaultPrevented=true;}};for(const handler of events.get('keydown')||[])handler(e);return e;}};
 }
 const target=(kind,choice=1)=>({dataset:kind==='choice'?{choice:String(choice)}:{},closest(selector){if(selector==='button')return kind==='choice'||kind==='button'?this:null;if(selector==='[data-choice]')return kind==='choice'?this:null;return null;}});
 
 test('number choice then Enter records one answer instead of selecting it again',()=>{
-  const a=app();a.run("start('diagnostic')");
-  a.key('2',target('page'));
-  assert.equal(a.run('session.choice'),1);
-  const enter=a.key('Enter',target('choice'));
+  const a=app();a.run("start('diagnostic')");const key=a.run('currentQuestion().answer');
+  a.key(String(key+1),target('page'));
+  assert.equal(a.run('session.choice'),key);
+  const enter=a.key('Enter',target('choice',key));
   assert.equal(enter.defaultPrevented,true);
   assert.equal(a.run('session.checked'),true);
   assert.equal(a.run('session.results.length'),1);
