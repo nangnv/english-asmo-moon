@@ -20,6 +20,9 @@ Giúp học sinh lớp 6 thích học tiếng Anh, biết lỗi sai, sửa đư�
 
 - Hosting Cloudflare (nhánh `claude/cloudflare-hosting`, chờ merge): Worker bật chế độ đăng nhập khi có binding D1. Đang dùng `AUTH_MODE=password` với 2 mật khẩu gia đình trong secret (`STUDENT_PASSWORD`, `PARENT_PASSWORD`), giới hạn số lần nhập sai lưu trên D1; đổi mật khẩu sẽ đăng xuất các phiên của nó. Phiên cookie `HttpOnly`/`Secure` 30 ngày, D1 chỉ lưu bản băm; tiến độ học sinh lưu lên D1 có version, xung đột giữa hai máy được gộp; phụ huynh chỉ xem. Chế độ Google OAuth vẫn có trong code nhưng chưa thử với Google thật. Hướng dẫn: `docs/DEPLOY_CLOUDFLARE.md`.
 
+- Luyện cá nhân hóa (nhánh `claude/personalized-practice`, chờ merge): ngân hàng 360 câu (40 câu PDF + 320 câu Claude soạn, mỗi lô do một agent soạn và một agent khác kiểm tra độc lập), mỗi câu có `type` (dạng bài) và `level` (A2/B1/B2). Phiên luyện ưu tiên câu chưa gặp, nghiêng về dạng yếu; chế độ "Luyện dạng con hay sai"; đề thử sức ~40 câu tạo mới mỗi lần theo cấu trúc PDF. Thời gian học tính theo thời gian hoạt động (bỏ khoảng nghỉ > 3 phút và lúc ẩn tab). Trang "Bảng theo dõi" cho phụ huynh: giờ học ngày/tuần/tháng, độ chính xác lần đầu, xu hướng 7 ngày, theo độ khó, dạng tốt/yếu kèm cách khắc phục, báo cáo từng buổi. Email báo cáo sau mỗi buổi qua Resend (cần secret `RESEND_API_KEY`, `REPORT_EMAIL`; chưa cấu hình). GitHub Action deploy khi merge vào `main` (cần secret `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`; chưa cấu hình). Quy tắc ngân hàng câu: `docs/QUESTION_BANK.md`.
+- Đợt 2 (sau kỳ thi 22/11): mục tiêu IELTS 7.5 và game tiếng Anh. Agent cập nhật câu hằng tuần chưa tạo vì GitHub chưa kết nối với tài khoản Claude.
+
 ## Giới hạn đã biết
 
 - Chưa có Google login trực tiếp hoặc tên đăng nhập/mật khẩu riêng của app.
@@ -27,7 +30,7 @@ Giúp học sinh lớp 6 thích học tiếng Anh, biết lỗi sai, sửa đư�
 - Chưa đồng bộ tiến độ giữa thiết bị, chưa có phân quyền phụ huynh/học sinh.
 - Khu phụ huynh hiện là giao diện dùng chung, không khóa mật khẩu.
 - Lần gọi API thật ngày 29/10 trả `credit_balance_exhausted`. Key đã cấu hình nhưng chưa xác nhận AI hoạt động thành công sau khi bổ sung tín dụng. Không suy đoán số dư hiện tại.
-- Câu AI chỉ kiểm tra định dạng, chưa được giáo viên thẩm định độc lập.
+- Câu AI chỉ kiểm tra định dạng, chưa được giáo viên thẩm định độc lập. 320 câu Claude soạn được agent kiểm tra chéo, chưa có giáo viên duyệt.
 - Rate limit ở bộ nhớ từng Worker isolate, chưa phải hạn mức chi phí bền vững.
 - Điểm bài luyện không phải năng lực chuẩn hóa hoặc dự đoán điểm/huy chương ASMO.
 

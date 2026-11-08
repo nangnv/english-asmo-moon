@@ -202,3 +202,26 @@ test('AUTH_MODE alone also fails closed without a database',async()=>{
   assert.equal((await worker.fetch(get('/'),{AUTH_MODE:'password',STUDENT_PASSWORD:'fixture-student-pass'})).status,503);
   assert.equal((await worker.fetch(get('/api/progress',null,{'oai-authenticated-user-id':'spoof'}),{AUTH_MODE:'password'})).status,401);
 });
+
+// Parent report email. Resend is mocked; the address is fictional.
+test('a new study session sends one report email; resaving it does not',async()=>{
+  const env={...pwEnv(),RESEND_API_KEY:'re_fixture',REPORT_EMAIL:'parent@example.com'};
+  const cookie=cookieOf(await worker.fetch(pwLogin('fixture-student-pass'),env),'__Host-asmo-session');
+  const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Ho_Chi_Minh'}).format(new Date());
+  const day={...progress,answers:{'pdf-11':{firstCorrect:false,mastered:false,attempts:1,lastChoice:0,due:today}},sessions:[{id:7,date:today,label:'Nhiệm vụ hôm nay',mode:'daily',count:2,correct:1,seconds:600,active:420,wrong:['pdf-11']}]};
+  const original=globalThis.fetch,sent=[];globalThis.fetch=async(url,init)=>{sent.push({url:String(url),body:JSON.parse(init.body)});return new Response('{}');};
+  try{
+    assert.equal((await worker.fetch(put(cookie,{baseVersion:0,data:day}),env)).status,200);
+    assert.equal(sent.length,1);assert.equal(sent[0].url,'https://api.resend.com/emails');
+    assert.deepEqual(sent[0].body.to,['parent@example.com']);
+    assert.match(sent[0].body.text,/đúng 1\/2 câu/);assert.match(sent[0].body.text,/7 phút/);assert.match(sent[0].body.text,/Thì của động từ/);
+    assert.equal((await worker.fetch(put(cookie,{baseVersion:1,data:{...day,xp:30}}),env)).status,200);
+    assert.equal(sent.length,1);
+  }finally{globalThis.fetch=original;}
+});
+
+test('without Resend settings no email is attempted',async()=>{
+  const env=pwEnv(),cookie=cookieOf(await worker.fetch(pwLogin('fixture-student-pass'),env),'__Host-asmo-session');
+  const original=globalThis.fetch;let calls=0;globalThis.fetch=async()=>{calls++;return new Response('{}');};
+  try{assert.equal((await worker.fetch(put(cookie,{baseVersion:0,data:progress}),env)).status,200);assert.equal(calls,0);}finally{globalThis.fetch=original;}
+});

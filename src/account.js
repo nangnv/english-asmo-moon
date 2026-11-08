@@ -86,7 +86,7 @@ async function initAccount(){
  if(!res?.ok){account.pendingInit=true;if(!initAccount.warned)toast('Chưa tải được tiến độ từ tài khoản. Bài làm được giữ trên máy này và sẽ lưu sau.');initAccount.warned=true;setTimeout(initAccount,30000);return;}
  const d=await res.json(),meta=syncMeta(),local=state;
  account={mode:'cloud',pendingInit:false,email:d.email,role:d.role,readOnly:d.readOnly,version:d.version,updatedAt:d.updatedAt,status:'saved'};
- if(d.readOnly){session=null;if(d.data)adopt(d.data);else{state=initialState();state.generated=[];}}
+ if(d.readOnly){session=null;if(page==='home')page='dashboard';if(d.data)adopt(d.data);else{state=initialState();state.generated=[];}}
  else if(meta.email===d.email&&meta.dirty){
   // Unsaved work from this device: push it, merging if the server moved on meanwhile.
   if(d.data&&meta.version!==d.version)adopt(mergeProgress(d.data,local));

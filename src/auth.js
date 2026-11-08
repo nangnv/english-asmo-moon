@@ -104,7 +104,7 @@ function checkProgress(data){
  if(data.draft!=null&&(typeof data.draft!=='object'||!Array.isArray(data.draft.ids)||data.draft.ids.length>100||!Array.isArray(data.draft.results)||data.draft.results.length>100))return false;
  try{validateBackup(structuredClone(data),BANK.concat(generated));return true;}catch{return false;}
 }
-async function handleProgress(request,env,url,user){
+async function handleProgress(request,env,url,user,ctx){
  const student=studentOf(env,user);if(!student)return json({error:'Chưa cấu hình tài khoản học sinh.'},503);
  const read=()=>env.DB.prepare('SELECT data,version,updated_at FROM progress WHERE student=?').bind(student).first();
  const view=row=>({role:user.role,email:user.email,readOnly:user.role!=='student',version:row?.version||0,updatedAt:row?.updated_at||null,data:row?JSON.parse(row.data):null});
@@ -117,10 +117,13 @@ async function handleProgress(request,env,url,user){
  let body;try{body=JSON.parse(raw);}catch{return json({error:'Không đọc được dữ liệu.'},400);}
  if(!Number.isInteger(body.baseVersion)||body.baseVersion<0||!checkProgress(body.data))return json({error:'Dữ liệu tiến độ không hợp lệ.'},400);
  const data=JSON.stringify(body.data),now=Date.now();
+ // The previous copy tells which sessions are new, for the parent report email.
+ const before=env.RESEND_API_KEY&&env.REPORT_EMAIL&&body.baseVersion>0?await read():null;
  const r=body.baseVersion===0
   ?await env.DB.prepare('INSERT INTO progress (student,data,version,updated_at,updated_by) VALUES (?,?,1,?,?) ON CONFLICT(student) DO NOTHING').bind(student,data,now,user.email).run()
   :await env.DB.prepare('UPDATE progress SET data=?,version=version+1,updated_at=?,updated_by=? WHERE student=? AND version=?').bind(data,now,user.email,student,body.baseVersion).run();
  // Another device saved first: return its copy so the browser can merge and retry.
  if(!r.meta?.changes)return json({conflict:true,...view(await read())},409);
+ const mail=sendReport(env,before?JSON.parse(before.data):null,body.data,url.origin);if(ctx?.waitUntil)ctx.waitUntil(mail);else await mail;
  return json({version:body.baseVersion+1,updatedAt:now});
 }

@@ -1,5 +1,5 @@
 # Cloudflare Workers deployment. See docs/DEPLOY_CLOUDFLARE.md.
-# Secrets (STUDENT_PASSWORD, PARENT_PASSWORD, OPENAI_API_KEY) are set with `wrangler secret put`, never here.
+# Secrets (STUDENT_PASSWORD, PARENT_PASSWORD, OPENAI_API_KEY, RESEND_API_KEY, REPORT_EMAIL) are set with `wrangler secret put`, never here.
 name = "asmo-english"
 main = "worker/index.js"
 compatibility_date = "2026-10-01"

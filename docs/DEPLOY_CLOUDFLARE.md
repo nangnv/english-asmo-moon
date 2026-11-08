@@ -56,6 +56,31 @@ Chạy lại lệnh để đổi mật khẩu khi quên hoặc nghi bị lộ.
 
 Nếu muốn dùng Gia sư AI (tùy chọn, tính phí theo OpenAI): `npx wrangler secret put OPENAI_API_KEY`.
 
+## Bước 4b. Email báo cáo sau mỗi buổi học (tùy chọn, miễn phí)
+
+Mỗi khi Moon học xong một buổi và tiến độ được lưu, Worker gửi email cho phụ huynh. Email gồm số câu đúng, thời gian học, các dạng bài con làm sai và cách khắc phục. Email được gửi qua Resend; gói miễn phí cho phép 100 email mỗi ngày.
+
+1. Đăng ký tại https://resend.com bằng chính địa chỉ email muốn nhận báo cáo. Khi chưa có tên miền riêng, Resend chỉ gửi từ `onboarding@resend.dev` đến email của chủ tài khoản, và như vậy là đủ cho gia đình.
+2. Trong Resend, vào **API Keys** → **Create API Key**, quyền **Sending access**.
+3. Trong Terminal, chạy 2 lệnh dưới đây. Mỗi lệnh sẽ hỏi giá trị: dán API key cho lệnh đầu, gõ email nhận báo cáo cho lệnh sau.
+
+```sh
+npx wrangler secret put RESEND_API_KEY
+npx wrangler secret put REPORT_EMAIL
+```
+
+Muốn tắt email thì xóa secret: `npx wrangler secret delete RESEND_API_KEY`. Mỗi email báo cáo tối đa 3 buổi học mới của hôm nay và hôm qua. Một buổi học không bị báo cáo hai lần.
+
+## Bước 4c. Tự deploy khi merge vào `main` (cho cập nhật câu hỏi hằng tuần)
+
+`.github/workflows/deploy.yml` chạy kiểm thử rồi deploy mỗi khi `main` có commit mới. Workflow cần 2 secret của GitHub:
+
+1. Cloudflare → **My Profile** → **API Tokens** → **Create Token** → mẫu **Edit Cloudflare Workers**. Thêm quyền **Account → D1 → Edit**, rồi tạo token.
+2. Lấy **Account ID** ở trang **Workers & Pages**, cột bên phải.
+3. GitHub → repo → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**. Tạo `CLOUDFLARE_API_TOKEN` và `CLOUDFLARE_ACCOUNT_ID`.
+
+Token chỉ dán vào trang Secrets của GitHub, không gửi qua chat. Thiếu secret thì workflow báo lỗi và không deploy, còn website đang chạy không bị ảnh hưởng.
+
 ## Bước 5. Kiểm tra
 
 Mở địa chỉ web trong cửa sổ ẩn danh rồi kiểm tra:
