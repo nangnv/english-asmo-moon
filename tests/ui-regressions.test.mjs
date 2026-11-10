@@ -154,3 +154,23 @@ test("today's review mixes the weak types and also brings a wrong answer back",(
   assert.equal(a.run('session.ids.length'),11);
   assert.match(a.run('practiceHTML()'),/Ôn hôm nay/);
 });
+
+test('a perfect drill earns gold, new badges and a rank change shown once',()=>{
+  const a=app();
+  assert.equal(a.run('rankOf(0).name'),'Tập sự');assert.equal(a.run('rankOf(59).name'),'Tập sự');assert.equal(a.run('rankOf(60).name'),'Người khám phá');assert.equal(a.run('rankOf(900).next'),null);
+  a.run("start('drill',undefined,'phrasal-verb')");
+  for(let i=0;i<5;i++)a.run('choose(currentQuestion().answer);checkAnswer();nextQuestion()');
+  const r=a.run('JSON.parse(JSON.stringify(result))');
+  // 10+10+15+15+15 = 65 XP crosses 60.
+  assert.equal(r.xp,65);assert.equal(r.rankUp,'Người khám phá');
+  for(const b of ['Buổi ôn đầu tiên','Chuỗi 5 câu đúng','Lượt hoàn hảo'])assert.ok(r.newBadges.includes(b),b);
+  const html=a.run('resultHTML()');
+  assert.match(html,/huy chương vàng/);assert.equal((html.match(/medal-slot won/g)||[]).length,3);assert.match(html,/Ôn tiếp/);
+});
+
+test('a drill with 3 of 5 right on the first try earns one medal',()=>{
+  const a=app();a.run("start('drill',undefined,'connector')");
+  for(let i=0;i<5;i++)a.run(`choose(${i<2}?(currentQuestion().answer+1)%4:currentQuestion().answer);checkAnswer();nextQuestion()`);
+  while(a.run('Boolean(session)'))a.run('choose(currentQuestion().answer);checkAnswer();nextQuestion()');
+  assert.equal((a.run('resultHTML()').match(/medal-slot won/g)||[]).length,1);
+});

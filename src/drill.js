@@ -37,3 +37,21 @@ function todayCardHTML(){
  const done=state.sessions.some(x=>x.mode==='today'&&x.date===dayKey()&&x.completed!==false),types=drillTypes();
  return '<section class="card today-card"><div><span class="tag orange">MỖI NGÀY 10 ĐẾN 15 PHÚT</span><h2>'+(done?'Hôm nay con đã ôn xong':'Ôn hôm nay')+'</h2><p>10 câu trộn '+types.map(t=>'<strong>'+esc(TYPES[t][0])+'</strong>').join(', ')+'. Dạng yếu nhất ra nhiều câu hơn, câu từng sai được ôn trước.</p></div><button class="btn today-btn" data-action="start" data-mode="today">'+(done?'Ôn thêm 10 câu':'Ôn hôm nay (10 câu)')+'</button></section>';
 }
+// Explorer ranks by total XP.
+const RANKS=[[0,'Tập sự'],[60,'Người khám phá'],[160,'Thám hiểm viên'],[320,'Nhà thám hiểm'],[550,'Thuyền trưởng'],[900,'Huyền thoại']];
+function rankOf(xp){const i=RANKS.findLastIndex(r=>xp>=r[0]),next=RANKS[i+1];return {name:RANKS[i][1],next:next?.[1]||null,need:next?next[0]-xp:0,progress:next?Math.round((xp-RANKS[i][0])/(next[0]-RANKS[i][0])*100):100};}
+function rankHTML(){const r=rankOf(state.xp);return '<div class="rank-strip"><div class="mastery-top"><span>Cấp của con: <strong>'+r.name+'</strong> · '+state.xp+' XP</span><span class="muted">'+(r.next?'Còn '+r.need+' XP lên '+r.next:'Cấp cao nhất')+'</span></div><div class="mastery-bar" role="progressbar" aria-label="Tiến tới cấp tiếp theo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+r.progress+'"><i style="width:'+r.progress+'%"></i></div></div>';}
+const MEDAL_SVG=c=>'<svg viewBox="0 0 48 56" width="56" height="64" aria-hidden="true"><path d="M14 2h8l6 16h-8zM34 2h-8l-6 16h8z" fill="#8E7CC3"/><circle cx="24" cy="34" r="17" fill="'+c[0]+'" stroke="'+c[1]+'" stroke-width="3"/><path d="M24 24l3 6.2 6.8 1-4.9 4.8 1.2 6.8L24 39.6l-6.1 3.2 1.2-6.8-4.9-4.8 6.8-1z" fill="'+c[1]+'"/></svg>';
+// End of a drill or today's review: 1 to 3 medals (bronze from any finish, silver from 70%, gold from 90% right on the first try).
+function drillResultHTML(r){
+ const acc=pct(r.correct,r.count),n=acc>=90?3:acc>=70?2:1,colors=[['#E8A86B','#9A5B22'],['#E3E7EC','#8A96A3'],['#FFD54A','#B98900']],names=['đồng','bạc','vàng'];
+ return '<div class="finish drill-finish"><div class="finish-hero"><div class="finish-burst" aria-hidden="true">'+Array.from({length:12},(_,i)=>'<i style="--a:'+i*30+'deg"></i>').join('')+'</div><img class="finish-mascot" src="'+MASCOT[n>1?'correct':'try-again']+'" alt="" width="440" height="440"></div><h1>'+(n===3?'Tuyệt vời, huy chương vàng!':n===2?'Giỏi lắm, huy chương bạc!':'Hoàn thành lượt luyện!')+'</h1><p class="finish-sub">'+esc(r.label)+'</p>'+
+ '<div class="medal-row" role="img" aria-label="Đạt '+n+' trên 3 huy chương, huy chương '+names[n-1]+'">'+[0,1,2].map(i=>'<span class="medal-slot'+(i<n?' won':'')+'">'+MEDAL_SVG(i<n?colors[i]:['#ECE7F1','#C9BFD6'])+'</span>').join('')+'</div>'+
+ '<div class="finish-stats"><div class="fstat acc"><span>Đúng ngay</span><strong>'+r.correct+'/'+r.count+'</strong></div><div class="fstat xp"><span>XP nhận được</span><strong>'+ICONS.bolt+'+'+(r.xp||0)+'</strong></div><div class="fstat time"><span>Chuỗi dài nhất</span><strong>'+(r.bestStreak||0)+' câu</strong></div></div>'+
+ (r.retryCorrect?'<p class="finish-note">Con đã sửa đúng '+r.retryCorrect+' câu ở lần làm lại.</p>':'')+
+ (r.rankUp?'<p class="rank-up">Lên cấp mới: <strong>'+esc(r.rankUp)+'</strong></p>':'')+
+ (r.newBadges?.length?'<p class="rank-up">Huy hiệu mới: <strong>'+r.newBadges.map(esc).join(', ')+'</strong></p>':'')+
+ (n<3?'<p class="finish-note">'+(n===2?'Đúng ngay từ 90% để nhận huy chương vàng.':'Đúng ngay từ 70% để nhận huy chương bạc. Không sao, ôn thêm một lượt là nhớ hơn.')+'</p>':'')+
+ '<div class="finish-actions"><button class="btn" data-action="start" data-mode="'+r.mode+'"'+(r.type?' data-type="'+r.type+'"':'')+'>Ôn tiếp</button><button class="btn secondary" data-page="practice">Về Luyện tập</button></div>'+
+ (r.wrong?.length?resultTypesHTML(r):'')+'</div>';
+}
