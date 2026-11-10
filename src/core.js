@@ -48,16 +48,16 @@ export function strongTypes(bank,state,min=3){return typeStats(bank,state).filte
 const levelFor=p=>p===null?2:p<50?1:p<80?2:3;
 // Questions sharing a passage are served together (up to `max`) so one reading is not wasted on a single item.
 function withSiblings(q,pool,taken,max){if(!q.passage)return [q];return [q,...pool.filter(x=>x!==q&&x.passage===q.passage&&!taken.has(x.id))].slice(0,max);}
-export function chooseQuestions(bank,state,mode='daily',category,{today=dayKey(),random=Math.random,type}={}){
+export function chooseQuestions(bank,state,mode='daily',category,{today=dayKey(),random=Math.random,type,types=[]}={}){
  let pool=bank.filter(q=>!category||q.category===category);
  if(mode==='drill')return drillSet(bank.filter(q=>q.type===type),state,5,today,random);
+ // Daily review of the weak types, weakest first (4, 3, 3), mistakes not yet fixed before new questions, types interleaved.
+ if(mode==='today'){const sets=types.map((t,i)=>drillSet(bank.filter(q=>q.type===t),state,[4,3,3][i]||0,today,random,true)),out=[];for(let i=0;i<4;i++)for(const s of sets)if(s[i])out.push(s[i]);return out;}
  if(mode==='mock')return mockSet(pool,state,random);
  if(mode==='review')return pool.filter(q=>state.answers[q.id]&&!state.answers[q.id].mastered).sort((a,b)=>(state.answers[a.id].due||'').localeCompare(state.answers[b.id].due||'')).slice(0,8);
  if(mode==='diagnostic')return Object.keys(CATEGORIES).flatMap(cat=>{const fresh=pool.filter(q=>q.category===cat&&!state.answers[q.id]&&q.level!==3);const first=fresh[Math.floor(random()*fresh.length)];return first?withSiblings(first,fresh,new Set(),3).concat(fresh.filter(q=>!q.passage&&q!==first)).slice(0,3):[];});
  const size=Math.max(4,Math.min(12,Math.round(state.profile.minutes/2))),ts=typeStats(bank,state),w=weakness(ts),cat=Object.fromEntries(stats(bank,state).map(x=>[x.id,levelFor(x.percent)]));
- // Focus practice: only the weakest types (or the weakest skill before there is enough data), including unfixed mistakes.
- if(mode==='focus'){const focus=new Set(weakTypes(bank,state).slice(0,2).map(s=>s.type));if(focus.size)pool=pool.filter(q=>focus.has(typeOf(q)));else{const worst=stats(bank,state).sort((a,b)=>(a.percent??50)-(b.percent??50))[0].id;pool=pool.filter(q=>q.category===worst);}}
- const due=pool.filter(q=>state.answers[q.id]&&!state.answers[q.id].mastered&&(mode==='focus'||state.answers[q.id].due<=today)).slice(0,mode==='focus'?Math.ceil(size/3):3);
+ const due=pool.filter(q=>state.answers[q.id]&&!state.answers[q.id].mastered&&state.answers[q.id].due<=today).slice(0,3);
  // Fresh questions: weak types first, near the right level for the skill, with some randomness so sessions differ.
  const score=q=>(w[typeOf(q)]??0.5)-Math.abs((q.level||2)-cat[q.category])*0.2+random()*0.35;
  const fresh=pool.filter(q=>!state.answers[q.id]).map(q=>[score(q),q]).sort((a,b)=>b[0]-a[0]).map(x=>x[1]);
@@ -69,9 +69,9 @@ export function chooseQuestions(bank,state,mode='daily',category,{today=dayKey()
 }
 // Short drill on one question type: unseen first, then unfixed mistakes, then the least recently seen.
 // Questions answered in the last two days go last so a new round does not feel like a repeat.
-function drillSet(pool,state,n,today,random){
+function drillSet(pool,state,n,today,random,mistakesFirst=false){
  const recent=new Date(today+'T12:00:00+07:00');recent.setUTCDate(recent.getUTCDate()-2);const cut=dayKey(recent);
- const rank=q=>{const a=state.answers[q.id];if(!a)return 0;if(a.lastDate>cut)return 3;return a.mastered?2:1;};
+ const rank=q=>{const a=state.answers[q.id];if(!a)return mistakesFirst?1:0;if(a.lastDate>cut)return 3;return a.mastered?2:mistakesFirst?0:1;};
  return pool.map(q=>[rank(q),state.answers[q.id]?.lastDate||'',random(),q]).sort((a,b)=>a[0]-b[0]||a[1].localeCompare(b[1])||a[2]-b[2]).slice(0,n).map(x=>x[3]);
 }
 // A timed test shaped like the 40-question practice PDF: 10 vocab, 10 grammar, one cloze passage, reading passages to ~40. Unseen first.

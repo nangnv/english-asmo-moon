@@ -21,14 +21,14 @@ test('passage questions come in consecutive groups',()=>{
   assert.ok(qs.length>=2);assert.equal(qs[0].passage,qs[1].passage);
 });
 
-test('focus practice targets the weakest question type',()=>{
-  const state=initialState(),wrong=BANK.filter(q=>q.type==='passive').slice(0,1).concat(BANK.filter(q=>q.type==='verb-tense').slice(0,3));
-  for(const q of wrong)recordAnswer(state,q,(q.answer+1)%4,{today});
-  for(const q of BANK.filter(q=>q.type==='synonym').slice(0,3))recordAnswer(state,q,q.answer,{today});
-  assert.equal(weakTypes(BANK,state)[0].type,'verb-tense');
-  const qs=chooseQuestions(BANK,state,'focus',undefined,{today,random:seeded(5)});
-  assert.ok(qs.length>0);assert.ok(qs.every(q=>q.type==='verb-tense'),qs.map(q=>q.type).join());
-  assert.equal(typeStats(BANK,state).find(s=>s.type==='synonym').percent,100);
+test("today's review gives 4/3/3 questions of the weak types, mistakes first",()=>{
+  const state=initialState(),miss=BANK.filter(q=>q.type==='connector').slice(0,2);
+  for(const q of miss)recordAnswer(state,q,(q.answer+1)%4,{today:'2026-11-01'});
+  const qs=chooseQuestions(BANK,state,'today',undefined,{today,random:seeded(5),types:['connector','reported-speech','phrasal-verb']});
+  const count=t=>qs.filter(q=>q.type===t).length;
+  assert.equal(qs.length,10);assert.equal(count('connector'),4);assert.equal(count('reported-speech'),3);assert.equal(count('phrasal-verb'),3);
+  for(const q of miss)assert.ok(qs.includes(q),q.id);
+  assert.notEqual(qs[0].type,qs[1].type);
 });
 
 test('the timed test mixes all skills and prefers unseen questions',()=>{

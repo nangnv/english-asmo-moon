@@ -145,3 +145,12 @@ test('a right answer on the drill retry is shown as right, with the answer numbe
   a.run('session.results.at(-1).correct=false');
   assert.match(a.run('quizHTML()'),new RegExp('Đáp án đúng: '+(4-a.run('currentQuestion().answer'))+'\\.'));
 });
+
+test("today's review mixes the weak types and also brings a wrong answer back",()=>{
+  const a=app();a.run("start('today')");
+  assert.equal(a.run('session.ids.length'),10);
+  assert.equal(a.run('new Set(session.ids.map(id=>BANK.find(q=>q.id===id).type)).size'),3);
+  a.run('choose((currentQuestion().answer+1)%4);checkAnswer()');
+  assert.equal(a.run('session.ids.length'),11);
+  assert.match(a.run('practiceHTML()'),/Ôn hôm nay/);
+});
