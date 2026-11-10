@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {chooseQuestions,recordAnswer,initialState,typeStats,weakTypes,timeTotals,sessionReport} from '../src/core.js';
+import {chooseQuestions,recordAnswer,initialState,typeStats,weakTypes,timeTotals,sessionReport,formatDuration} from '../src/core.js';
 
 const BANK=JSON.parse(fs.readFileSync('src/bank.json','utf8'));
 const seeded=seed=>()=>{seed=(seed*16807)%2147483647;return seed/2147483647;};
@@ -53,4 +53,8 @@ test('a session report names the wrong question types with a fix',()=>{
   const ids=BANK.filter(q=>q.type==='verb-tense').slice(0,2).map(q=>q.id).concat(BANK.find(q=>q.type==='detail').id);
   const r=sessionReport(BANK,{date:today,label:'x',count:10,correct:7,seconds:900,active:480,wrong:ids});
   assert.equal(r.percent,70);assert.equal(r.minutes,8);assert.equal(r.types[0].type,'verb-tense');assert.equal(r.types[0].count,2);assert.ok(r.types[0].fix.length>20);
+});
+
+test('durations read as seconds, minutes and seconds, then whole minutes',()=>{
+  assert.equal(formatDuration(45),'45 giây');assert.equal(formatDuration(83),'1 phút 23 giây');assert.equal(formatDuration(120),'2 phút');assert.equal(formatDuration(725),'12 phút');
 });
