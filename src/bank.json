@@ -3,7 +3,7 @@
     "id": "pdf-1",
     "category": "vocab",
     "type": "synonym",
-    "prompt": "The scientist made an enormous discovery that changed the world. The word enormous is closest\nin meaning to:",
+    "prompt": "The scientist made an enormous discovery that changed the world. The word enormous is closest in meaning to:",
     "choices": [
       "tiny",
       "huge",

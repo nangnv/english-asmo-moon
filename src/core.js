@@ -48,8 +48,9 @@ export function strongTypes(bank,state,min=3){return typeStats(bank,state).filte
 const levelFor=p=>p===null?2:p<50?1:p<80?2:3;
 // Questions sharing a passage are served together (up to `max`) so one reading is not wasted on a single item.
 function withSiblings(q,pool,taken,max){if(!q.passage)return [q];return [q,...pool.filter(x=>x!==q&&x.passage===q.passage&&!taken.has(x.id))].slice(0,max);}
-export function chooseQuestions(bank,state,mode='daily',category,{today=dayKey(),random=Math.random}={}){
+export function chooseQuestions(bank,state,mode='daily',category,{today=dayKey(),random=Math.random,type}={}){
  let pool=bank.filter(q=>!category||q.category===category);
+ if(mode==='drill')return drillSet(bank.filter(q=>q.type===type),state,5,today,random);
  if(mode==='mock')return mockSet(pool,state,random);
  if(mode==='review')return pool.filter(q=>state.answers[q.id]&&!state.answers[q.id].mastered).sort((a,b)=>(state.answers[a.id].due||'').localeCompare(state.answers[b.id].due||'')).slice(0,8);
  if(mode==='diagnostic')return Object.keys(CATEGORIES).flatMap(cat=>{const fresh=pool.filter(q=>q.category===cat&&!state.answers[q.id]&&q.level!==3);const first=fresh[Math.floor(random()*fresh.length)];return first?withSiblings(first,fresh,new Set(),3).concat(fresh.filter(q=>!q.passage&&q!==first)).slice(0,3):[];});
@@ -65,6 +66,13 @@ export function chooseQuestions(bank,state,mode='daily',category,{today=dayKey()
  // Only when every fresh question is used: revisit answered ones, least recently seen first.
  const old=pool.filter(q=>state.answers[q.id]&&!taken.has(q.id)).sort((a,b)=>(state.answers[a.id].lastDate||'').localeCompare(state.answers[b.id].lastDate||''));
  return [...picked,...old].slice(0,size);
+}
+// Short drill on one question type: unseen first, then unfixed mistakes, then the least recently seen.
+// Questions answered in the last two days go last so a new round does not feel like a repeat.
+function drillSet(pool,state,n,today,random){
+ const recent=new Date(today+'T12:00:00+07:00');recent.setUTCDate(recent.getUTCDate()-2);const cut=dayKey(recent);
+ const rank=q=>{const a=state.answers[q.id];if(!a)return 0;if(a.lastDate>cut)return 3;return a.mastered?2:1;};
+ return pool.map(q=>[rank(q),state.answers[q.id]?.lastDate||'',random(),q]).sort((a,b)=>a[0]-b[0]||a[1].localeCompare(b[1])||a[2]-b[2]).slice(0,n).map(x=>x[3]);
 }
 // A timed test shaped like the 40-question practice PDF: 10 vocab, 10 grammar, one cloze passage, reading passages to ~40. Unseen first.
 function mockSet(pool,state,random){

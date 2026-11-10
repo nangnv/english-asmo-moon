@@ -62,3 +62,8 @@ textarea:disabled,input:disabled,select:disabled{background:var(--surface-soft);
 .dash-time .stat strong{font-size:1.25rem}.stat-row.four{grid-template-columns:repeat(4,minmax(0,1fr))}@media (max-width:900px){.stat-row.four{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .finish-types{background:var(--warning-bg);border:1px solid var(--warning-border);border-radius:var(--radius);padding:14px 18px;margin:16px auto;max-width:640px;text-align:left}.finish-types h2{font-size:1.05rem;margin:0 0 6px}.finish-types p{margin:4px 0}
 @media (max-width:560px){.level-row{grid-template-columns:1fr}}
+/* Weak-type drills and the "Học nhanh" card */
+.lesson-prompt{white-space:pre-line}
+.learn-card{display:grid;gap:12px}.learn-card section{background:var(--surface-soft);border-radius:14px;padding:12px 14px}.learn-card h3{font-size:.95rem;margin:0 0 6px;color:var(--brand-700)}.learn-card p,.learn-card ol{margin:0;overflow-wrap:anywhere}.learn-card ol{padding-left:20px;display:grid;gap:6px}.learn-tip{background:var(--warning-bg)!important}.learn-right{color:var(--success-fg)}.learn-wrong{color:var(--error-fg);margin-top:6px!important}
+.drill-card h3{margin:0 0 4px}.drill-card .button-row{margin-top:12px}.drill-card .btn,.learn-card+.button-row .btn,[data-action="learn"]{min-height:48px}
+.cheer{font-weight:800;color:var(--brand-700)}.full-sentence{background:var(--success-bg);border:1px solid var(--success-border);border-radius:12px;padding:10px 12px;white-space:pre-line}
