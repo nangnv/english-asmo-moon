@@ -10,7 +10,7 @@ function app() {
   const document={querySelector:node,body:{classList:{toggle(){}}},addEventListener(name,handler){if(!events.has(name))events.set(name,[]);events.get(name).push(handler);}};
   const context=vm.createContext({document,console,Intl,Date,Math,JSON,Map,Set,Object,Array,String,Number,Boolean,Error,location:{hash:''},window:{scrollTo(){},addEventListener(){}},localStorage:{getItem(){return null;},setItem(){}},setTimeout(){},clearTimeout(){},setInterval(){},AbortSignal,structuredClone,fetch(){return new Promise(()=>{});},MASCOT:{},MEDALS:{},BANK:JSON.parse(fs.readFileSync('src/bank.json','utf8'))});
   // One script, like the bundle: client files share function hoisting.
-  vm.runInContext(['core.js','home.js','lesson.js','app.js','dashboard.js','account.js'].map(file=>fs.readFileSync('src/'+file,'utf8').replaceAll('export ','')).join('\n'),context,{filename:'bundle.js'});
+  vm.runInContext(['core.js','home.js','lesson.js','app.js','dashboard.js','drill.js','account.js'].map(file=>fs.readFileSync('src/'+file,'utf8').replaceAll('export ','')).join('\n'),context,{filename:'bundle.js'});
   return {run:code=>vm.runInContext(code,context),key(key,target){const e={key,target,altKey:false,ctrlKey:false,metaKey:false,defaultPrevented:false,preventDefault(){this.defaultPrevented=true;}};for(const handler of events.get('keydown')||[])handler(e);return e;}};
 }
 const target=(kind,choice=1)=>({dataset:kind==='choice'?{choice:String(choice)}:{},closest(selector){if(selector==='button')return kind==='choice'||kind==='button'?this:null;if(selector==='[data-choice]')return kind==='choice'?this:null;return null;}});
@@ -109,4 +109,68 @@ test('work done before the account loads is marked unsaved so it is merged, not 
   a.run("localStorage.setItem=(k,v)=>{globalThis.__stored=globalThis.__stored||{};globalThis.__stored[k]=v;}");
   a.run("start('daily');choose(0);checkAnswer()");
   assert.equal(JSON.parse(a.run("globalThis.__stored['asmo-quest-sync']")).dirty,true);
+});
+
+test('a drill round brings a wrong answer back once and scores XP and the streak bonus',()=>{
+  const a=app();a.run("start('drill',undefined,'connector')");
+  assert.equal(a.run('session.ids.length'),5);
+  const first=a.run('session.ids[0]');
+  a.run('choose((currentQuestion().answer+1)%4);checkAnswer()');
+  assert.equal(a.run('session.ids.length'),6);assert.equal(a.run('session.ids[5]'),first);
+  a.run('nextQuestion()');
+  for(let i=0;i<4;i++)a.run('choose(currentQuestion().answer);checkAnswer();nextQuestion()');
+  // The retry shows the same question, choices still addressed by their original index.
+  assert.equal(a.run('currentQuestion().id'),first);assert.equal(a.run('choiceOrder().slice().sort().join()'),'0,1,2,3');
+  a.run('choose(currentQuestion().answer);checkAnswer();nextQuestion()');
+  // 3 for the wrong try, 10+10, then 15+15 with the streak bonus, then 5 for the correction + 5 bonus.
+  assert.equal(a.run('state.xp'),63);
+  const s=a.run('JSON.parse(JSON.stringify(state.sessions.at(-1)))');
+  assert.equal(s.count,5);assert.equal(s.correct,4);assert.equal(s.retryCorrect,1);assert.equal(s.bestStreak,5);
+  assert.deepEqual(s.wrong,[first]);assert.equal(s.items.length,6);assert.equal(s.items[5].n,2);assert.equal(s.type,'connector');
+  assert.equal(s.label,'Luyện từ nối');
+});
+
+test('a drill picks unseen questions of the requested type first',()=>{
+  const a=app();a.run("start('drill',undefined,'reported-speech')");
+  assert.ok(a.run("session.ids.every(id=>BANK.find(q=>q.id===id).type==='reported-speech'&&!state.answers[id])"));
+});
+
+test('a right answer on the drill retry is shown as right, with the answer number in shuffled order',()=>{
+  const a=app();a.run("start('drill',undefined,'phrasal-verb')");
+  a.run('choose((currentQuestion().answer+1)%4);checkAnswer();nextQuestion()');
+  for(let i=0;i<4;i++)a.run('choose(currentQuestion().answer);checkAnswer();nextQuestion()');
+  a.run("choiceOrder=()=>[3,2,1,0];choose(currentQuestion().answer);checkAnswer()");
+  const html=a.run('quizHTML()');
+  assert.match(html,/is-ok/);assert.doesNotMatch(html,/Chưa đúng rồi/);
+  a.run('session.results.at(-1).correct=false');
+  assert.match(a.run('quizHTML()'),new RegExp('Đáp án đúng: '+(4-a.run('currentQuestion().answer'))+'\\.'));
+});
+
+test("today's review mixes the weak types and also brings a wrong answer back",()=>{
+  const a=app();a.run("start('today')");
+  assert.equal(a.run('session.ids.length'),10);
+  assert.equal(a.run('new Set(session.ids.map(id=>BANK.find(q=>q.id===id).type)).size'),3);
+  a.run('choose((currentQuestion().answer+1)%4);checkAnswer()');
+  assert.equal(a.run('session.ids.length'),11);
+  assert.match(a.run('practiceHTML()'),/Ôn hôm nay/);
+});
+
+test('a perfect drill earns gold, new badges and a rank change shown once',()=>{
+  const a=app();
+  assert.equal(a.run('rankOf(0).name'),'Tập sự');assert.equal(a.run('rankOf(59).name'),'Tập sự');assert.equal(a.run('rankOf(60).name'),'Người khám phá');assert.equal(a.run('rankOf(900).next'),null);
+  a.run("start('drill',undefined,'phrasal-verb')");
+  for(let i=0;i<5;i++)a.run('choose(currentQuestion().answer);checkAnswer();nextQuestion()');
+  const r=a.run('JSON.parse(JSON.stringify(result))');
+  // 10+10+15+15+15 = 65 XP crosses 60.
+  assert.equal(r.xp,65);assert.equal(r.rankUp,'Người khám phá');
+  for(const b of ['Buổi ôn đầu tiên','Chuỗi 5 câu đúng','Lượt hoàn hảo'])assert.ok(r.newBadges.includes(b),b);
+  const html=a.run('resultHTML()');
+  assert.match(html,/huy chương vàng/);assert.equal((html.match(/medal-slot won/g)||[]).length,3);assert.match(html,/Ôn tiếp/);
+});
+
+test('a drill with 3 of 5 right on the first try earns one medal',()=>{
+  const a=app();a.run("start('drill',undefined,'connector')");
+  for(let i=0;i<5;i++)a.run(`choose(${i<2}?(currentQuestion().answer+1)%4:currentQuestion().answer);checkAnswer();nextQuestion()`);
+  while(a.run('Boolean(session)'))a.run('choose(currentQuestion().answer);checkAnswer();nextQuestion()');
+  assert.equal((a.run('resultHTML()').match(/medal-slot won/g)||[]).length,1);
 });

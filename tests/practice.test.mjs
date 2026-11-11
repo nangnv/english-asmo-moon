@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {chooseQuestions,recordAnswer,initialState,typeStats,weakTypes,timeTotals,sessionReport} from '../src/core.js';
+import {chooseQuestions,recordAnswer,initialState,typeStats,weakTypes,timeTotals,sessionReport,formatDuration} from '../src/core.js';
 
 const BANK=JSON.parse(fs.readFileSync('src/bank.json','utf8'));
 const seeded=seed=>()=>{seed=(seed*16807)%2147483647;return seed/2147483647;};
@@ -21,14 +21,14 @@ test('passage questions come in consecutive groups',()=>{
   assert.ok(qs.length>=2);assert.equal(qs[0].passage,qs[1].passage);
 });
 
-test('focus practice targets the weakest question type',()=>{
-  const state=initialState(),wrong=BANK.filter(q=>q.type==='passive').slice(0,1).concat(BANK.filter(q=>q.type==='verb-tense').slice(0,3));
-  for(const q of wrong)recordAnswer(state,q,(q.answer+1)%4,{today});
-  for(const q of BANK.filter(q=>q.type==='synonym').slice(0,3))recordAnswer(state,q,q.answer,{today});
-  assert.equal(weakTypes(BANK,state)[0].type,'verb-tense');
-  const qs=chooseQuestions(BANK,state,'focus',undefined,{today,random:seeded(5)});
-  assert.ok(qs.length>0);assert.ok(qs.every(q=>q.type==='verb-tense'),qs.map(q=>q.type).join());
-  assert.equal(typeStats(BANK,state).find(s=>s.type==='synonym').percent,100);
+test("today's review gives 4/3/3 questions of the weak types, mistakes first",()=>{
+  const state=initialState(),miss=BANK.filter(q=>q.type==='connector').slice(0,2);
+  for(const q of miss)recordAnswer(state,q,(q.answer+1)%4,{today:'2026-11-01'});
+  const qs=chooseQuestions(BANK,state,'today',undefined,{today,random:seeded(5),types:['connector','reported-speech','phrasal-verb']});
+  const count=t=>qs.filter(q=>q.type===t).length;
+  assert.equal(qs.length,10);assert.equal(count('connector'),4);assert.equal(count('reported-speech'),3);assert.equal(count('phrasal-verb'),3);
+  for(const q of miss)assert.ok(qs.includes(q),q.id);
+  assert.notEqual(qs[0].type,qs[1].type);
 });
 
 test('the timed test mixes all skills and prefers unseen questions',()=>{
@@ -53,4 +53,8 @@ test('a session report names the wrong question types with a fix',()=>{
   const ids=BANK.filter(q=>q.type==='verb-tense').slice(0,2).map(q=>q.id).concat(BANK.find(q=>q.type==='detail').id);
   const r=sessionReport(BANK,{date:today,label:'x',count:10,correct:7,seconds:900,active:480,wrong:ids});
   assert.equal(r.percent,70);assert.equal(r.minutes,8);assert.equal(r.types[0].type,'verb-tense');assert.equal(r.types[0].count,2);assert.ok(r.types[0].fix.length>20);
+});
+
+test('durations read as seconds, minutes and seconds, then whole minutes',()=>{
+  assert.equal(formatDuration(45),'45 giây');assert.equal(formatDuration(83),'1 phút 23 giây');assert.equal(formatDuration(120),'2 phút');assert.equal(formatDuration(725),'12 phút');
 });

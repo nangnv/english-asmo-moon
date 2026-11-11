@@ -3,7 +3,7 @@
     "id": "pdf-1",
     "category": "vocab",
     "type": "synonym",
-    "prompt": "The scientist made an enormous discovery that changed the world. The word enormous is closest\nin meaning to:",
+    "prompt": "The scientist made an enormous discovery that changed the world. The word enormous is closest in meaning to:",
     "choices": [
       "tiny",
       "huge",
@@ -6118,5 +6118,1637 @@
     "passage": "In Defence of Boredom\n\nAsk any group of children what they dislike most about the school holidays, and somebody will almost certainly say, \"Being bored.\" Parents seem to agree: the moment a child complains that there is nothing to do, many of them rush to fill the gap with extra classes, organised trips or, more often than not, a tablet. I understand the instinct, but I have come to believe that it is a mistake. A little boredom, in my view, is not a problem to be solved but something children actually need.\n\nMy reasoning is simple. When every minute is filled with activities chosen by adults, children never have to decide for themselves what to do next. Boredom forces them to make that decision. It is uncomfortable at first, of course, yet that discomfort is exactly what pushes the mind to wander, to imagine and, eventually, to invent. Some of my own happiest childhood memories began with an empty afternoon: a cardboard box that became a spaceship, a notebook filled with a comic that nobody else ever read.\n\nScreens make this harder. A phone offers instant entertainment, so the uncomfortable moment of boredom never lasts long enough to turn into anything else. I am not suggesting that technology is evil; I use it every day, and it has its place. But if a device is always within reach, the empty spaces in a child's day disappear, and with them, I suspect, some of the creativity that grows there.\n\nCritics will say that boredom leads to trouble, and that bored children simply argue or sulk. That is sometimes true, at least for the first twenty minutes. In my experience, though, if adults resist the urge to step in, something interesting usually happens next.\n\nSo, this summer, I would like to suggest a small experiment. Leave a few afternoons completely unplanned. Put the tablet in a drawer. Then wait, patiently, to see what your children create when nobody tells them what to do.",
     "source": "Claude soạn · đã kiểm tra chéo",
     "level": 3
+  },
+  {
+    "id": "rs-001",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"I am tired,\" she said last night.\nShe said that she ______ tired.",
+    "choices": [
+      "is",
+      "was",
+      "were",
+      "has been"
+    ],
+    "answer": 1,
+    "explanation": "Lùi thì một bậc: am/is thành was. Cô ấy nói từ tối qua nên phải lùi thì. She là số ít nên dùng was, không dùng were.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "rs-002",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"We live in Hanoi,\" they said in 2015. Now they live in Hue.\nThey said that they ______ in Hanoi.",
+    "choices": [
+      "live",
+      "are living",
+      "lived",
+      "will live"
+    ],
+    "answer": 2,
+    "explanation": "Hiện tại đơn lùi thành quá khứ đơn: live thành lived. Bây giờ họ không còn sống ở Hà Nội nên bắt buộc lùi thì.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "rs-003",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"I will help you tomorrow,\" Tom said.\nTom said that he ______ help me the next day.",
+    "choices": [
+      "would",
+      "will",
+      "can",
+      "did"
+    ],
+    "answer": 0,
+    "explanation": "will lùi thành would. Tomorrow đổi thành the next day, đó là dấu hiệu phải lùi thì.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "rs-004",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"I can swim,\" Lan said last summer.\nLan said that she ______ swim.",
+    "choices": [
+      "is able",
+      "would",
+      "was",
+      "could"
+    ],
+    "answer": 3,
+    "explanation": "can lùi thành could. Động từ khuyết thiếu cũng phải lùi thì khi tường thuật. is able sai vì thiếu to và chưa lùi thì.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "rs-005",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"I have finished my homework,\" he said last night.\nHe said that he ______ finished his homework.",
+    "choices": [
+      "has",
+      "have",
+      "had",
+      "was"
+    ],
+    "answer": 2,
+    "explanation": "Hiện tại hoàn thành lùi thành quá khứ hoàn thành: have finished thành had finished.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "rs-006",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"I am reading now,\" she said.\nShe said that she was reading ______.",
+    "choices": [
+      "now",
+      "then",
+      "today",
+      "tomorrow"
+    ],
+    "answer": 1,
+    "explanation": "Từ chỉ thời gian đổi: now thành then. Câu đã lùi thì was reading nên dùng then.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "rs-007",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"I saw him yesterday,\" Mai said last week.\nMai said that she had seen him ______.",
+    "choices": [
+      "yesterday",
+      "the next day",
+      "tomorrow",
+      "the day before"
+    ],
+    "answer": 3,
+    "explanation": "yesterday đổi thành the day before. Mai nói từ tuần trước nên không dùng yesterday nữa. Quá khứ đơn saw lùi thành had seen.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "rs-008",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"Where do you live?\" he asked me two years ago, before I moved.\nHe asked me where I ______.",
+    "choices": [
+      "lived",
+      "live",
+      "do live",
+      "did live"
+    ],
+    "answer": 0,
+    "explanation": "Câu hỏi tường thuật không đảo ngữ, không dùng do/did. Lùi thì: live thành lived. Mình đã chuyển nhà nên không dùng live.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "rs-009",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"Do you like pizza?\" she asked me.\nShe asked me ______ I liked pizza.",
+    "choices": [
+      "that",
+      "what",
+      "if",
+      "where"
+    ],
+    "answer": 2,
+    "explanation": "Câu hỏi Yes/No tường thuật dùng if hoặc whether, không dùng that.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "rs-010",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"I am going to call you tomorrow,\" Nam said to me.\nNam said that ______ was going to call me the next day.",
+    "choices": [
+      "he",
+      "I",
+      "you",
+      "they"
+    ],
+    "answer": 0,
+    "explanation": "Đổi đại từ: người nói là Nam nên I thành he. Tomorrow đổi thành the next day.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "rs-011",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"Don't be late,\" the teacher said to us.\nThe teacher told us ______ late.",
+    "choices": [
+      "don't be",
+      "not be",
+      "to not being",
+      "not to be"
+    ],
+    "answer": 3,
+    "explanation": "Lệnh phủ định tường thuật: told + người + not to + động từ. Không dùng don't.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "rs-012",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"What is your name?\" the boy asked me yesterday.\nThe boy asked me what my name ______.",
+    "choices": [
+      "has",
+      "was",
+      "did",
+      "were"
+    ],
+    "answer": 1,
+    "explanation": "Không đảo ngữ, chủ ngữ my name đứng trước động từ. is lùi thành was. your đổi thành my vì người nghe là mình.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "rs-013",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "Linh ______ me that she was hungry.",
+    "choices": [
+      "told",
+      "said",
+      "spoke",
+      "talked"
+    ],
+    "answer": 0,
+    "explanation": "Có tân ngữ chỉ người ngay sau (me) thì dùng told. said không đi thẳng với người nghe.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "rs-014",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"My sister likes cats,\" Lucy said.\nLucy said that ______ sister liked cats.",
+    "choices": [
+      "my",
+      "his",
+      "your",
+      "her"
+    ],
+    "answer": 3,
+    "explanation": "Người nói là Lucy (con gái) nên my đổi thành her. Nhớ đổi cả tính từ sở hữu.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "rs-015",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"I am watching TV now,\" Ben said on the phone last night.\nBen said that he ______ TV then.",
+    "choices": [
+      "is watching",
+      "was watching",
+      "were watching",
+      "watches"
+    ],
+    "answer": 1,
+    "explanation": "Hiện tại tiếp diễn lùi thành quá khứ tiếp diễn: am watching thành was watching. He đi với was.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "rs-016",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"I love this song,\" Kim said to me at the party last night.\nKim told me that she loved ______ song.",
+    "choices": [
+      "this",
+      "these",
+      "that",
+      "those"
+    ],
+    "answer": 2,
+    "explanation": "this đổi thành that khi tường thuật. song là số ít nên không dùng those.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "rs-017",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"I have a test today,\" Lily said last Monday.\nLily said that she had a test ______.",
+    "choices": [
+      "today",
+      "that day",
+      "the day before",
+      "the next day"
+    ],
+    "answer": 1,
+    "explanation": "today đổi thành that day. Lily nói từ thứ Hai tuần trước nên không dùng today nữa.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "rs-018",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"Are you coming to the party?\" Anna asked me.\nAnna asked me ______ I was coming to the party.",
+    "choices": [
+      "whether",
+      "that",
+      "what",
+      "do"
+    ],
+    "answer": 0,
+    "explanation": "Câu hỏi Yes/No tường thuật dùng whether hoặc if. Không dùng that, không thêm do.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "rs-019",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"Close the window, please,\" Mr Brown said to Jack.\nMr Brown asked Jack ______ the window.",
+    "choices": [
+      "close",
+      "closing",
+      "to close",
+      "closed"
+    ],
+    "answer": 2,
+    "explanation": "Lời yêu cầu tường thuật: asked + người + to + động từ nguyên mẫu.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "rs-020",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"I lost my key on Sunday,\" Peter said to us yesterday.\nPeter told us that he ______ his key on Sunday.",
+    "choices": [
+      "has lost",
+      "loses",
+      "is losing",
+      "had lost"
+    ],
+    "answer": 3,
+    "explanation": "Quá khứ đơn lùi thành quá khứ hoàn thành: lost thành had lost.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "rs-021",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"I am going to buy a new bike,\" Dad said last week. Then he changed his mind.\nDad said that he ______ buy a new bike.",
+    "choices": [
+      "is going to",
+      "was going to",
+      "am going to",
+      "will going to"
+    ],
+    "answer": 1,
+    "explanation": "am going to lùi thành was going to. Bố đã đổi ý nên không dùng is going to. Dad là he nên không dùng am.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "rs-022",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"We moved to Da Nang two years ago,\" Minh said in 2020.\nMinh said that they had moved to Da Nang two years ______.",
+    "choices": [
+      "ago",
+      "later",
+      "after",
+      "before"
+    ],
+    "answer": 3,
+    "explanation": "ago đổi thành before khi tường thuật. Câu đã lùi thì had moved nên dùng before.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "rs-023",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "Last month, Grandma said to us, \"I will visit you next week.\"\nGrandma told us that she would visit us ______.",
+    "choices": [
+      "the following week",
+      "next week",
+      "the week before",
+      "last week"
+    ],
+    "answer": 0,
+    "explanation": "next week đổi thành the following week. Lời nói từ tháng trước nên next week không còn đúng.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "rs-024",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "At the park, Sam said, \"I left my bag here.\"\nAt home, I told Mum: \"Sam said that he had left his bag ______.\"",
+    "choices": [
+      "here",
+      "this place",
+      "there",
+      "where"
+    ],
+    "answer": 2,
+    "explanation": "here đổi thành there. Lúc kể chuyện mình đang ở nhà, không còn ở công viên.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "rs-025",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"What are you doing?\" Mum asked me yesterday.\nMum asked me what ______.",
+    "choices": [
+      "was I doing",
+      "I am doing",
+      "did I do",
+      "I was doing"
+    ],
+    "answer": 3,
+    "explanation": "Câu hỏi tường thuật không đảo ngữ: chủ ngữ I đứng trước động từ. are doing lùi thành was doing.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "rs-026",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"Why did you come late?\" the teacher asked Tom yesterday.\nThe teacher asked Tom why ______ late.",
+    "choices": [
+      "he had come",
+      "did he come",
+      "he did come",
+      "had he come"
+    ],
+    "answer": 0,
+    "explanation": "Bỏ did, không đảo ngữ. Quá khứ đơn lùi thành had come. you đổi thành he vì nói về Tom.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "rs-027",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"Where can I buy stamps?\" an old man asked me last week.\nThe old man asked me where ______ stamps.",
+    "choices": [
+      "could he buy",
+      "he could buy",
+      "can he buy",
+      "did he buy"
+    ],
+    "answer": 1,
+    "explanation": "Câu hỏi tường thuật không đảo ngữ: he could buy, không phải could he buy hay can he buy. can lùi thành could, I đổi thành he.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "rs-028",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"Have you seen my cat?\" Mrs Lan asked us yesterday.\nMrs Lan asked us ______.",
+    "choices": [
+      "if had we seen her cat",
+      "that we had seen her cat",
+      "if we had seen her cat",
+      "have we seen her cat"
+    ],
+    "answer": 2,
+    "explanation": "Câu hỏi Yes/No dùng if, không đảo ngữ. have seen thành had seen, you thành we, my thành her.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "rs-029",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "\"Please don't make any noise,\" Mum said to us.\nMum asked us ______ any noise.",
+    "choices": [
+      "not to make",
+      "don't make",
+      "to not making",
+      "not making"
+    ],
+    "answer": 0,
+    "explanation": "Lời yêu cầu phủ định: asked + người + not to + động từ. Không dùng don't trong câu tường thuật.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "rs-030",
+    "category": "grammar",
+    "type": "reported-speech",
+    "prompt": "Jim ______ to his friends that the film was boring.",
+    "choices": [
+      "told",
+      "talked",
+      "spoke",
+      "said"
+    ],
+    "answer": 3,
+    "explanation": "Có \"to + người\" thì dùng said to. told đi thẳng với người (told his friends), không có to.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-001",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "Can you ______ my cat while I am away?",
+    "choices": [
+      "look for",
+      "look after",
+      "look up",
+      "look at"
+    ],
+    "answer": 1,
+    "explanation": "look after là chăm sóc. Nhờ ai trông con mèo khi mình đi vắng thì dùng look after.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "pv-002",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "I can't find my keys. I am ______ them.",
+    "choices": [
+      "looking for",
+      "looking after",
+      "looking up",
+      "looking out"
+    ],
+    "answer": 0,
+    "explanation": "look for là tìm kiếm. Không thấy chìa khóa nên đang đi tìm.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "pv-003",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "Don't know this word? ______ it in the dictionary.",
+    "choices": [
+      "Look after",
+      "Look for",
+      "Look like",
+      "Look up"
+    ],
+    "answer": 3,
+    "explanation": "look up là tra cứu. Tra từ trong từ điển thì dùng look up.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "pv-004",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "We don't wear shoes inside our house. Please ______ your shoes when you enter the house.",
+    "choices": [
+      "put on",
+      "turn off",
+      "take off",
+      "give up"
+    ],
+    "answer": 2,
+    "explanation": "take off là cởi ra (giày, áo). Nhà không đi giày bên trong nên vào nhà phải cởi giày ra, put on là mang vào thì ngược nghĩa.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "pv-005",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "It's cold outside. ______ your jacket.",
+    "choices": [
+      "Take off",
+      "Put on",
+      "Turn down",
+      "Run out"
+    ],
+    "answer": 1,
+    "explanation": "put on là mặc vào. Trời lạnh nên mặc áo khoác vào, take off là cởi ra thì ngược nghĩa.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "pv-006",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "I ______ at 6 a.m. every morning.",
+    "choices": [
+      "get up",
+      "give up",
+      "put up",
+      "look after"
+    ],
+    "answer": 0,
+    "explanation": "get up là thức dậy, ra khỏi giường. Câu nói về giờ dậy mỗi sáng.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "pv-007",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "Please ______ the music. It's too loud.",
+    "choices": [
+      "turn up",
+      "put on",
+      "take off",
+      "turn down"
+    ],
+    "answer": 3,
+    "explanation": "turn down là vặn nhỏ lại. turn up là vặn to lên. Nhạc quá to nên phải vặn nhỏ.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "pv-008",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "We have ______ milk. Let's buy some.",
+    "choices": [
+      "looked after",
+      "taken after",
+      "run out of",
+      "put off"
+    ],
+    "answer": 2,
+    "explanation": "run out of là hết sạch. Hết sữa nên phải đi mua thêm.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-009",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "We must ______ the picnic until next week because of the rain.",
+    "choices": [
+      "put on",
+      "put off",
+      "put away",
+      "put out"
+    ],
+    "answer": 1,
+    "explanation": "put off là hoãn lại. Dấu hiệu là until next week và because of the rain.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-010",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "She ______ her grandmother. They have the same smile.",
+    "choices": [
+      "takes after",
+      "looks after",
+      "gets up",
+      "turns down"
+    ],
+    "answer": 0,
+    "explanation": "take after là giống (người lớn tuổi hơn trong gia đình). Dấu hiệu là the same smile.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-011",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "Don't ______! Keep trying and you will succeed.",
+    "choices": [
+      "give away",
+      "get up",
+      "go on",
+      "give up"
+    ],
+    "answer": 3,
+    "explanation": "give up là bỏ cuộc. Dấu hiệu là Keep trying, nghĩa là đừng bỏ cuộc.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "pv-012",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "Please ______ your toys after you play.",
+    "choices": [
+      "put off",
+      "put on",
+      "put away",
+      "take off"
+    ],
+    "answer": 2,
+    "explanation": "put away là cất đi, dọn gọn. Chơi xong thì cất đồ chơi.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "pv-013",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "Shh! Be quiet, or you will ______ the baby.",
+    "choices": [
+      "give up",
+      "wake up",
+      "grow up",
+      "turn up"
+    ],
+    "answer": 1,
+    "explanation": "wake up là đánh thức, làm ai tỉnh dậy. Em bé đang ngủ nên phải giữ im lặng.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "pv-014",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "When I ______, I want to be a doctor.",
+    "choices": [
+      "grow up",
+      "give up",
+      "set up",
+      "wake up"
+    ],
+    "answer": 0,
+    "explanation": "grow up là lớn lên, trưởng thành. Câu nói về ước mơ khi lớn lên.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "pv-015",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "In the sentence \"Please turn off your phones during the test\", \"turn off\" means:",
+    "choices": [
+      "make them louder",
+      "switch them on",
+      "charge them",
+      "switch them off"
+    ],
+    "answer": 3,
+    "explanation": "turn off là tắt (đèn, máy, điện thoại), giống switch off. turn on hay switch on mới là bật lên.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "pv-016",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "In the sentence \"Please hand in your test when you finish\", \"hand in\" means:",
+    "choices": [
+      "write your name on it",
+      "take it home",
+      "give it to the teacher",
+      "throw it away"
+    ],
+    "answer": 2,
+    "explanation": "hand in là nộp bài cho thầy cô. Làm xong bài kiểm tra thì nộp lại.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-017",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "This shirt looks nice. Can I ______ before I buy it?",
+    "choices": [
+      "try on it",
+      "try it on",
+      "take it after",
+      "look it for"
+    ],
+    "answer": 1,
+    "explanation": "try on là mặc thử. Khi tân ngữ là đại từ (it, them, him) thì đặt giữa: try it on, không nói try on it.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-018",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "This bottle is empty. Please ______ in the recycling bin.",
+    "choices": [
+      "throw it away",
+      "throw away it",
+      "put it on",
+      "give it up"
+    ],
+    "answer": 0,
+    "explanation": "throw away là vứt đi. Đại từ it phải đứng giữa động từ và tiểu từ: throw it away.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-019",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "My dad will ______ at the bus stop after school.",
+    "choices": [
+      "pick up me",
+      "give me up",
+      "grow me up",
+      "pick me up"
+    ],
+    "answer": 3,
+    "explanation": "pick up someone là đón ai đó. Đại từ me đứng giữa: pick me up.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-020",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "Please ______ this form with your name and address.",
+    "choices": [
+      "write down",
+      "look over",
+      "fill in",
+      "hand out"
+    ],
+    "answer": 2,
+    "explanation": "fill in là điền vào (đơn, phiếu). Điền tên và địa chỉ vào tờ đơn. write down là ghi lại, không dùng với tờ đơn như vậy.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-021",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "Students must ______ their homework to the teacher before Friday.",
+    "choices": [
+      "hand out",
+      "hand in",
+      "fill in",
+      "take in"
+    ],
+    "answer": 1,
+    "explanation": "hand in là nộp bài cho thầy cô. hand out là phát ra cho nhiều người, ngược chiều với câu này.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-022",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "The car ______ on the way to the beach, so we had to call a mechanic.",
+    "choices": [
+      "broke down",
+      "broke up",
+      "broke out",
+      "broke in"
+    ],
+    "answer": 0,
+    "explanation": "break down là (máy, xe) bị hỏng. Dấu hiệu là phải gọi thợ sửa xe.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-023",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "Lan was sad after losing the race, so we told jokes to ______.",
+    "choices": [
+      "cheer up her",
+      "give her up",
+      "take her after",
+      "cheer her up"
+    ],
+    "answer": 3,
+    "explanation": "cheer up là làm ai vui lên. Kể chuyện cười để bạn bớt buồn. Đại từ her đứng giữa: cheer her up.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-024",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "Don't panic! ______ and tell me what happened.",
+    "choices": [
+      "Calm up",
+      "Cheer down",
+      "Calm down",
+      "Break down"
+    ],
+    "answer": 2,
+    "explanation": "calm down là bình tĩnh lại. Dấu hiệu là Don't panic, tức là đừng hoảng.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-025",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "Let's ______ early tomorrow so we can reach the mountain before noon.",
+    "choices": [
+      "set up",
+      "set off",
+      "take after",
+      "put on"
+    ],
+    "answer": 1,
+    "explanation": "set off là khởi hành, lên đường. Đi sớm để đến núi trước buổi trưa.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-026",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "Can you ______ what time the film starts? Check the website.",
+    "choices": [
+      "find out",
+      "find in",
+      "look after",
+      "give out"
+    ],
+    "answer": 0,
+    "explanation": "find out là tìm hiểu, tìm ra thông tin. Xem trang web để biết giờ phim bắt đầu.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-027",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "I'm really ______ seeing my cousins next summer!",
+    "choices": [
+      "looking for",
+      "looking after",
+      "looking up to",
+      "looking forward to"
+    ],
+    "answer": 3,
+    "explanation": "look forward to là mong chờ. Sau to là động từ thêm ing: looking forward to seeing.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-028",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "Even though it was raining, the players ______ playing until the end of the match.",
+    "choices": [
+      "carried out",
+      "took off",
+      "carried on",
+      "turned on"
+    ],
+    "answer": 2,
+    "explanation": "carry on là tiếp tục. Dù trời mưa, cầu thủ vẫn tiếp tục chơi đến hết trận.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-029",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "I ______ an old photo of my grandparents while I was cleaning my room.",
+    "choices": [
+      "came up",
+      "came across",
+      "came back",
+      "came on"
+    ],
+    "answer": 1,
+    "explanation": "come across là tình cờ thấy, tình cờ gặp. Đang dọn phòng thì tình cờ thấy tấm ảnh cũ.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-030",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "In the sentence \"Nam gets on with his classmates very well\", \"gets on with\" means:",
+    "choices": [
+      "has a friendly relationship with",
+      "argues with",
+      "rides a bus with",
+      "looks after"
+    ],
+    "answer": 0,
+    "explanation": "get on with someone là hòa thuận, có quan hệ tốt với ai. Dấu hiệu là very well.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-031",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "In the story, the frog ______ a handsome prince when the princess kissed it.",
+    "choices": [
+      "turned up",
+      "turned off",
+      "turned into",
+      "turned down"
+    ],
+    "answer": 2,
+    "explanation": "turn into là biến thành, trở thành. Con ếch biến thành hoàng tử. turn up là xuất hiện hoặc vặn to, không hợp nghĩa.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-032",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "The dog was scared of the fireworks, so it ______ from the garden.",
+    "choices": [
+      "ran into",
+      "looked after",
+      "put away",
+      "ran away"
+    ],
+    "answer": 3,
+    "explanation": "run away là bỏ chạy, chạy trốn. Con chó sợ pháo hoa nên chạy khỏi khu vườn. run into là tình cờ gặp ai.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-033",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "Minh always ______ his new shoes because he wants everyone to see them.",
+    "choices": [
+      "shows up",
+      "shows off",
+      "takes after",
+      "gives back"
+    ],
+    "answer": 1,
+    "explanation": "show off là khoe khoang. Dấu hiệu là muốn mọi người nhìn thấy. show up là xuất hiện, đến nơi.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-034",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "Thirty schools will ______ the football tournament this weekend.",
+    "choices": [
+      "take part in",
+      "take after",
+      "run out of",
+      "put up with"
+    ],
+    "answer": 0,
+    "explanation": "take part in là tham gia (cuộc thi, hoạt động). Ba mươi trường sẽ tham gia giải bóng đá.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-035",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "Thanks for lending me your book. I'll ______ tomorrow.",
+    "choices": [
+      "give it up",
+      "give back it",
+      "give it back",
+      "give it away"
+    ],
+    "answer": 2,
+    "explanation": "give back là trả lại. Mượn sách thì phải trả lại. Đại từ it đứng giữa: give it back. give it away là cho người khác luôn.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "pv-036",
+    "category": "vocab",
+    "type": "phrasal-verb",
+    "prompt": "My room is so messy. I need to ______ my things before the guests arrive.",
+    "choices": [
+      "find out",
+      "hand in",
+      "turn off",
+      "sort out"
+    ],
+    "answer": 3,
+    "explanation": "sort out là sắp xếp, dọn dẹp cho gọn. Phòng bừa bộn nên phải sắp xếp đồ đạc. find out là tìm ra thông tin.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "cn-001",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "I stayed at home ______ it rained heavily.",
+    "choices": [
+      "because",
+      "although",
+      "however",
+      "despite"
+    ],
+    "answer": 0,
+    "explanation": "Mưa to là nguyên nhân khiến mình ở nhà nên dùng because + mệnh đề (it rained heavily).",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "cn-002",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "______ it was raining, we played outside.",
+    "choices": [
+      "Because",
+      "Although",
+      "So",
+      "Therefore"
+    ],
+    "answer": 1,
+    "explanation": "Mưa mà vẫn chơi ngoài trời là tương phản. Although đứng đầu câu, theo sau là mệnh đề.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "cn-003",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "He was ill. ______, he went to school.",
+    "choices": [
+      "So",
+      "Because",
+      "However",
+      "Despite"
+    ],
+    "answer": 2,
+    "explanation": "Ốm mà vẫn đi học là ý trái ngược. However đứng đầu câu mới và có dấu phẩy: However, ...",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "cn-004",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "I studied hard, ______ I passed the test.",
+    "choices": [
+      "but",
+      "although",
+      "because",
+      "so"
+    ],
+    "answer": 3,
+    "explanation": "Học chăm là nguyên nhân, đỗ bài kiểm tra là kết quả nên dùng so (vế sau là kết quả).",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "cn-005",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "______ the rain, we went to the park.",
+    "choices": [
+      "Although",
+      "Because",
+      "Despite",
+      "However"
+    ],
+    "answer": 2,
+    "explanation": "the rain là danh từ, không có động từ nên dùng Despite. Although phải đi với mệnh đề.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "cn-006",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "She likes tea. ______, she likes coffee.",
+    "choices": [
+      "In addition",
+      "Therefore",
+      "Because",
+      "Although"
+    ],
+    "answer": 0,
+    "explanation": "Thích trà rồi thêm ý thích cà phê, hai ý cùng hướng nên dùng In addition (bổ sung).",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "cn-007",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "We were late ______ the traffic.",
+    "choices": [
+      "because",
+      "although",
+      "so",
+      "because of"
+    ],
+    "answer": 3,
+    "explanation": "the traffic là danh từ nên dùng because of. because phải đi với mệnh đề có động từ.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "cn-008",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "We missed the bus. ______, we were late for school.",
+    "choices": [
+      "Although",
+      "Therefore",
+      "Despite",
+      "Because"
+    ],
+    "answer": 1,
+    "explanation": "Lỡ xe buýt là nguyên nhân, trễ học là kết quả nên dùng Therefore ở đầu câu mới.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "cn-009",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "______ being tired, he finished the work.",
+    "choices": [
+      "In spite of",
+      "Because of",
+      "Therefore",
+      "So"
+    ],
+    "answer": 0,
+    "explanation": "Mệt mà vẫn làm xong là tương phản. In spite of + V-ing (being tired).",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "cn-010",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "I like swimming, ______ I am not good at it.",
+    "choices": [
+      "so",
+      "but",
+      "because",
+      "therefore"
+    ],
+    "answer": 1,
+    "explanation": "Thích bơi nhưng bơi không giỏi là hai ý trái ngược trong cùng một câu nên dùng but.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "cn-011",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "Từ \"although\" thể hiện quan hệ nào?",
+    "choices": [
+      "Nguyên nhân",
+      "Kết quả",
+      "Tương phản",
+      "Bổ sung"
+    ],
+    "answer": 2,
+    "explanation": "although nghĩa là mặc dù, chỉ quan hệ tương phản, giống however, but, despite.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "cn-012",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "Từ nào dưới đây chỉ KẾT QUẢ?",
+    "choices": [
+      "although",
+      "because",
+      "despite",
+      "therefore"
+    ],
+    "answer": 3,
+    "explanation": "so và therefore chỉ kết quả. because chỉ nguyên nhân, although và despite chỉ tương phản.",
+    "passage": "",
+    "source": "Phụ huynh soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "cn-013",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "Tom was very hungry, ______ he ate two big sandwiches.",
+    "choices": [
+      "because",
+      "although",
+      "so",
+      "but"
+    ],
+    "answer": 2,
+    "explanation": "Đói là nguyên nhân, ăn hai cái bánh là kết quả nên dùng so. because thì phải đứng trước nguyên nhân.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "cn-014",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "I can't go out tonight ______ I have a lot of homework.",
+    "choices": [
+      "because",
+      "so",
+      "although",
+      "therefore"
+    ],
+    "answer": 0,
+    "explanation": "Nhiều bài tập là lý do không đi chơi được nên dùng because + mệnh đề chỉ nguyên nhân.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "cn-015",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "Mai can sing ______ dance very well.",
+    "choices": [
+      "but",
+      "so",
+      "because",
+      "and"
+    ],
+    "answer": 3,
+    "explanation": "Hát và nhảy là hai ý cùng hướng, nối thêm ý nên dùng and.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "cn-016",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "Từ \"because\" thể hiện quan hệ nào?",
+    "choices": [
+      "Kết quả",
+      "Nguyên nhân",
+      "Bổ sung",
+      "Tương phản"
+    ],
+    "answer": 1,
+    "explanation": "because nghĩa là vì, chỉ nguyên nhân. because of cũng chỉ nguyên nhân nhưng đi với danh từ.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "cn-017",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "The test was very difficult, ______ I finished it on time.",
+    "choices": [
+      "but",
+      "because",
+      "so",
+      "therefore"
+    ],
+    "answer": 0,
+    "explanation": "Bài khó mà vẫn làm xong đúng giờ là hai ý trái ngược nên dùng but.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 1
+  },
+  {
+    "id": "cn-018",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "Từ \"moreover\" thể hiện quan hệ nào?",
+    "choices": [
+      "Tương phản",
+      "Bổ sung",
+      "Nguyên nhân",
+      "Kết quả"
+    ],
+    "answer": 1,
+    "explanation": "moreover nghĩa là hơn nữa, dùng để thêm ý, giống in addition và also.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "cn-019",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "______ she was very tired, she helped her mother cook dinner.",
+    "choices": [
+      "Despite",
+      "Because of",
+      "Although",
+      "So"
+    ],
+    "answer": 2,
+    "explanation": "Mệt mà vẫn giúp mẹ là tương phản. Sau chỗ trống là mệnh đề (she was tired) nên dùng Although, không dùng Despite.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "cn-020",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "The football match was cancelled ______ the heavy snow.",
+    "choices": [
+      "because",
+      "so",
+      "although",
+      "because of"
+    ],
+    "answer": 3,
+    "explanation": "the heavy snow là danh từ nên dùng because of. because chỉ đi với mệnh đề có chủ ngữ và động từ.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "cn-021",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "He went to bed early ______ he was very sleepy.",
+    "choices": [
+      "because of",
+      "despite",
+      "because",
+      "so"
+    ],
+    "answer": 2,
+    "explanation": "he was very sleepy là mệnh đề nên dùng because. because of chỉ đi với danh từ hoặc V-ing.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "cn-022",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "Lan didn't bring an umbrella. ______, she got wet in the rain.",
+    "choices": [
+      "Therefore",
+      "However",
+      "Because",
+      "Although"
+    ],
+    "answer": 0,
+    "explanation": "Không mang ô là nguyên nhân, bị ướt là kết quả nên dùng Therefore ở đầu câu mới.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "cn-023",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "______ his bad leg, he still won the race.",
+    "choices": [
+      "Although",
+      "Because of",
+      "However",
+      "In spite of"
+    ],
+    "answer": 3,
+    "explanation": "Đau chân mà vẫn thắng là tương phản. his bad leg là cụm danh từ nên dùng In spite of.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "cn-024",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "The bike is very old, ______ it still works well.",
+    "choices": [
+      "so",
+      "but",
+      "despite",
+      "because"
+    ],
+    "answer": 1,
+    "explanation": "Xe cũ mà vẫn chạy tốt là hai ý trái ngược nên dùng but. so chỉ kết quả, despite không đi với mệnh đề.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "cn-025",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "This phone has a big screen. ______, its battery lasts for two days.",
+    "choices": [
+      "Moreover",
+      "However",
+      "Therefore",
+      "Despite"
+    ],
+    "answer": 0,
+    "explanation": "Màn hình to và pin lâu đều là điểm tốt, thêm ý cùng hướng nên dùng Moreover.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "cn-026",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "She got up early ______ catch the first bus.",
+    "choices": [
+      "so",
+      "to",
+      "because",
+      "for"
+    ],
+    "answer": 1,
+    "explanation": "Chỉ mục đích (để bắt chuyến xe đầu) và theo sau là động từ nguyên mẫu nên dùng to + V. Không dùng for + động từ để chỉ mục đích.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "cn-027",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "Please speak loudly ______ everyone can hear you.",
+    "choices": [
+      "because",
+      "although",
+      "so that",
+      "in order to"
+    ],
+    "answer": 2,
+    "explanation": "Chỉ mục đích và theo sau là mệnh đề (everyone can hear) nên dùng so that. in order to phải đi với động từ.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "cn-028",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "We went swimming ______ it was very hot.",
+    "choices": [
+      "so",
+      "but",
+      "although",
+      "because"
+    ],
+    "answer": 3,
+    "explanation": "Trời nóng là nguyên nhân, đi bơi là kết quả. Vế sau chỗ trống là nguyên nhân nên dùng because, không dùng so.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "cn-029",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "______ having a bad cold, Nam played in the match.",
+    "choices": [
+      "Because",
+      "Therefore",
+      "Despite",
+      "But"
+    ],
+    "answer": 2,
+    "explanation": "Bị cảm mà vẫn thi đấu là tương phản. Despite + V-ing (having a bad cold).",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
+  },
+  {
+    "id": "cn-030",
+    "category": "grammar",
+    "type": "connector",
+    "prompt": "Linh is good at maths. She is ______ good at science.",
+    "choices": [
+      "also",
+      "but",
+      "because",
+      "despite"
+    ],
+    "answer": 0,
+    "explanation": "Thêm một điểm giỏi nữa, cùng hướng nên dùng also, đứng sau động từ to be.",
+    "passage": "",
+    "source": "Claude soạn · đã kiểm tra chéo",
+    "level": 2
   }
 ]
